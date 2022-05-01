@@ -1,3 +1,3 @@
-let basename = '/e-levy-calculator';
+let basename = '/e-levy-calculator-gh';
 
 export default basename;
