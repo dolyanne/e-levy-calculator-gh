@@ -1,6 +1,6 @@
 {
-  "name": "front-end",
-  "short_name": "front-end",
+  "name": "E-Levy Calculator GH",
+  "short_name": "e-levy-gh",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",

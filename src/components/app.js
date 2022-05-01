@@ -5,7 +5,6 @@ import Header from "./header";
 
 // Code-splitting is automated for `routes` directory
 import Home from "../routes/home";
-import Profile from "../routes/profile";
 import baseroute from "../baseroute";
 
 const App = () => (

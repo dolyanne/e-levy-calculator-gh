@@ -5,7 +5,7 @@ import style from "./style.css";
 
 const Header = () => (
   <header class={style.header}>
-    <h1>Preact App</h1>
+    <h1>E-Levy Calculator GH</h1>
     <nav>
       <Link activeClassName={style.active} href={`${baseroute}/`}>
         Home

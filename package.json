@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "front-end",
-  "version": "0.0.0",
+  "name": "e-levy-calculator-gh",
+  "version": "0.1.0",
   "license": "MIT",
   "homepage": "https://dolyanne.github.io/e-levy-calculator",
   "scripts": {
