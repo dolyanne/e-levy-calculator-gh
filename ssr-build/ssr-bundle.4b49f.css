@@ -134,12 +134,22 @@ body {
 
 	.inputField {
 		font-size: 25px;
+		width: 85%;
+	}
+
+	.inputFieldEmphasis {
+		outline: 1px solid rgb(1, 11, 11);
 	}
 
 	.currency {
 		font-size: 25px;
 		margin-left: -70px;
 	}
+
+	.displayText {
+		max-width: 100%;
+		font-size: 25px;
+	}
 }
 
-/*# sourceMappingURL=ssr-bundle.cd133.css.map*/
+/*# sourceMappingURL=ssr-bundle.4b49f.css.map*/
