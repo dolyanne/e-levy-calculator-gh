@@ -1,20 +1,135 @@
-html, body {
-	height: 100%;
-	width: 100%;
-	padding: 0;
+body {
 	margin: 0;
-	background: #FAFAFA;
-	font-family: 'Helvetica Neue', arial, sans-serif;
+	padding: 0;
+}
+
+
+@font-face {
+	font-family: "Gidole-Regular";
+	src: url("./../assets/gidole.ttf");
+}
+
+/* containers */
+
+.mainContainer {
+	background: rgba(0, 82, 84, 1);
+	color: white;
+	width: 100%;
+	min-height: 100vh;
+	font-family: "Gidole-Regular";
+	letter-spacing: 1px;
+	font-weight: 500;
+	font-size: 20px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.gridContainer {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: auto;
+	max-width: 1200px;
+	padding: 10px;
+	grid-row-gap: 30px;
+	grid-column-gap: 60px;
+	align-items: center;
+}
+
+.gridItem {
+	max-width: 100%;
+}
+
+
+.gridItem.gridItemFull {
+	grid-row: span 1;
+	grid-column: span 2;
+}
+
+.centerFlex {
+	align-items: center;
+}
+
+
+
+/* Text Elements */
+.labelText {
 	font-weight: 400;
-	color: #444;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	font-size: 16px;
+	color: rgb(201, 201, 201);
+	margin: 15px;
+	letter-spacing: normal;
 }
 
-* {
-	box-sizing: border-box;
+
+.displayText {
+	max-width: 100%;
+	font-size: 35px;
+	color: white;
+	padding: 10px 20px;
 }
 
-#app {
-	height: 100%;
+.currency {
+	font-size: 35px;
+	color: white;
+	margin-left: -80px;
+}
+
+.charge {
+	background-color: rgb(84, 1, 0);
+	border-radius: 5px;
+	padding: 5 10px;
+}
+
+/* Inputs */
+.inputGroup {
+	display: flex;
+	flex-direction: column;
+	max-width: 100%;
+}
+
+.inputField {
+	border: 1px solid rgb(2, 34, 34);
+	border-radius: 5px;
+	max-width: 100%;
+	font-size: 35px;
+	color: white;
+	padding: 10px 20px;
+	background-color: rgb(2, 34, 34);
+}
+
+.inputField:focus {
+	outline: 4px solid black;
+}
+
+.inputFieldEmphasis {
+	outline: 4px solid rgb(1, 11, 11);
+}
+
+/* Mobile view */
+@media only screen and (max-width: 600px) {
+	.gridContainer {
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: auto;
+		max-width: 100%;
+	}
+
+	.gridItem.gridItemFull {
+		grid-row: span 1;
+		grid-column: span 1;
+		max-width: 100%;
+	}
+
+	.inputField {
+		font-size: 25px;
+	}
+
+	.currency {
+		font-size: 25px;
+		margin-left: -70px;
+	}
 }

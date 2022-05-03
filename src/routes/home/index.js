@@ -1,6 +1,5 @@
 import { h } from "preact";
-import { useState } from "preact/hooks";
-import style from "./style.css";
+import { useState, useEffect } from "preact/hooks";
 
 const Home = () => {
   const elevyTax = 0.015; //1.5/100
@@ -8,9 +7,7 @@ const Home = () => {
   const [transferAmount, setTransferAmount] = useState(0);
   const [elevyAmount, setElevyAmount] = useState(0);
 
-  const handleCheck = (event) => {
-    event.preventDefault();
-    //assuming it's first transfer of the day
+  useEffect(() => {
     if (amount > 100) {
       console.log(amount);
       let taxableAmount = amount - 100;
@@ -26,63 +23,66 @@ const Home = () => {
 
     console.log("checking");
     console.log("customer amount", amount);
-  };
+  }, [amount]);
 
   const handleChange = (event) => {
     setAmount(parseInt(event.target.value));
   };
   return (
-    <div class={style.home}>
-      <div class={style.flexMain}>
-        <form onSubmit={handleCheck} method="POST">
-          <div class={style.flexRow}>
-            <div class={style.flexItem}>
-              <label>
-                Amount (GHS):{" "}
-                <input
-                  type="number"
-                  name="amount"
-                  value={amount}
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
-            <div class={style.flexItem}>
-              <label>
-                Total due (GHS):
-                <input
-                  type="text"
-                  value={`${transferAmount.toFixed(2)}`}
-                  readOnly
-                  name="transferAmount"
-                />
-              </label>
+    <main className="mainContainer">
+      <div className="gridContainer">
+        <div className="gridItem gridItemFull">
+          <div className="inputGroup centerFlex">
+            <span className="displayText">E-LEVY CALCULATOR</span>
+          </div>
+        </div>
+        <div className="gridItem">
+          <div className="inputGroup">
+            <label for="amount" className="labelText">
+              You want to send:
+            </label>
+            <div>
+              <input
+                type="text"
+                name="amount"
+                value={amount}
+                onChange={handleChange}
+                className="inputField"
+                id="amount"
+              />
+              <span className="currency">GHS</span>
             </div>
           </div>
-
-          <div
-            style={{
-              justifyContent: "center",
-              alignContent: "center",
-              display: "flex",
-              margin: "10px",
-            }}
-          >
-            E-Levy (GHS): {`${elevyAmount.toFixed(2)}`}
+        </div>
+        <div className="gridItem">
+          <div className="inputGroup">
+            <label for="transferAmount" className="labelText">
+              You will pay:
+            </label>
+            <div>
+              <input
+                type="text"
+                value={`${transferAmount.toFixed(2)}`}
+                readOnly
+                name="transferAmount"
+                className="inputField inputFieldEmphasis"
+                id="transferAmount"
+              />
+              <span className="currency">GHS</span>
+            </div>
           </div>
-          <div
-            style={{
-              justifyContent: "center",
-              alignContent: "center",
-              display: "flex",
-              margin: "10px",
-            }}
-          >
-            <button type="submit">Check E-Levy</button>
+        </div>
+        <div className="gridItem gridItemFull">
+          <div className="inputGroup centerFlex">
+            <span className="labelText">You are being charged as E-Levy:</span>
+            <span className="displayText charge">
+              + GHS {`${elevyAmount.toFixed(2)}`}{" "}
+            </span>
+            <span className="labelText">Rate: 1.5% for (100 - Amount)</span>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 
