@@ -1,6 +1,12 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+
 @font-face {
 	font-family: "Gidole-Regular";
-	src: url("./../../assets/gidole.ttf");
+	src: url(/e-levy-calculator-gh/8ce9f1aeb7bb35922c231b71f5dc00e3.ttf);
 }
 
 /* containers */
@@ -16,21 +22,25 @@
 	font-size: 20px;
 	margin: 0;
 	padding: 0;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	-ms-flex-direction: column;
+	    flex-direction: column;
+	-ms-flex-pack: center;
+	    justify-content: center;
+	-ms-flex-align: center;
+	    align-items: center;
 }
 
 .gridContainer {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	grid-template-rows: auto;
-	max-width: 1200px;
 	padding: 10px;
 	grid-row-gap: 30px;
 	grid-column-gap: 60px;
-	align-items: center;
+	-ms-flex-align: center;
+	    align-items: center;
 }
 
 .gridItem {
@@ -44,7 +54,8 @@
 }
 
 .centerFlex {
-	align-items: center;
+	-ms-flex-align: center;
+	    align-items: center;
 }
 
 
@@ -56,6 +67,8 @@
 	color: rgb(201, 201, 201);
 	margin: 15px;
 	letter-spacing: normal;
+	max-width: 100%;
+	box-sizing: border-box;
 }
 
 
@@ -78,10 +91,28 @@
 	padding: 5 10px;
 }
 
+.disclaimer {
+	font-style: italic;
+	color: white;
+	font-size: 12px;
+	text-align: center;
+}
+
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	color: white;
+	font-size: 12px;
+	margin: 5px;
+}
+
 /* Inputs */
 .inputGroup {
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
+	-ms-flex-direction: column;
+	    flex-direction: column;
 	max-width: 100%;
 }
 
@@ -93,6 +124,7 @@
 	color: white;
 	padding: 10px 20px;
 	background-color: rgb(2, 34, 34);
+	box-sizing: border-box;
 }
 
 .inputField:focus {
@@ -107,7 +139,7 @@
 @media only screen and (max-width: 600px) {
 	.gridContainer {
 		display: grid;
-		grid-template-columns: auto;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
 		grid-template-rows: auto;
 		max-width: 100%;
 	}
@@ -120,10 +152,38 @@
 
 	.inputField {
 		font-size: 25px;
+		box-sizing: border-box;
+	}
+
+	.inputFieldEmphasis {
+		outline: 1px solid rgb(1, 11, 11);
 	}
 
 	.currency {
 		font-size: 25px;
 		margin-left: -70px;
 	}
+
+	.displayText {
+		max-width: 100%;
+		font-size: 25px;
+	}
+
+	.disclaimer {
+		font-size: 7px;
+	}
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+/*# sourceMappingURL=ssr-bundle.25671.css.map*/
