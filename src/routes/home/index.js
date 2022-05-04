@@ -1,41 +1,45 @@
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 
 const Home = () => {
   const elevyTax = 0.015; //1.5/100
   const [amount, setAmount] = useState("");
   const [transferAmount, setTransferAmount] = useState(0);
   const [elevyAmount, setElevyAmount] = useState(0);
+  let elevyFormRef = useRef(null);
 
   useEffect(() => {
-    if (amount != "") {
-      if (amount > 100) {
-        console.log(amount);
-        let taxableAmount = amount - 100;
-        let elevyCharge = taxableAmount * elevyTax;
-        let totalTransferAmount = amount + elevyCharge;
-        console.log(elevyCharge);
-        setTransferAmount(totalTransferAmount);
-        setElevyAmount(elevyCharge);
-      } else {
-        setTransferAmount(amount);
-        setElevyAmount(0);
-      }
-
-      console.log("checking");
-      console.log("customer amount", amount);
+    if (amount == "") {
+      setTransferAmount(0);
+      setElevyAmount(0);
+    } else if (amount > 100) {
+      let taxableAmount = amount - 100;
+      let elevyCharge = taxableAmount * elevyTax;
+      let totalTransferAmount = amount + elevyCharge;
+      setTransferAmount(totalTransferAmount);
+      setElevyAmount(elevyCharge);
+    } else {
+      setTransferAmount(amount);
+      setElevyAmount(0);
     }
   }, [amount]);
 
   const handleChange = (event) => {
-    setAmount(parseInt(event.target.value));
+    const parsedAmount = parseInt(event.target.value.replaceAll(",", ""), 10);
+    if (!isNaN(parsedAmount)) {
+      setAmount(parsedAmount);
+    } else {
+      elevyFormRef.current.reportValidity();
+      setAmount("");
+    }
   };
+
   return (
     <main className="mainContainer">
-      <div className="gridContainer">
+      <form className="gridContainer" ref={elevyFormRef} method="POST">
         <div className="gridItem gridItemFull">
           <div className="inputGroup centerFlex">
-            <span className="displayText">E-LEVY CALCULATOR</span>
+            <h1 className="displayText">E-LEVY CALCULATOR</h1>
           </div>
         </div>
         <div className="gridItem">
@@ -45,9 +49,11 @@ const Home = () => {
             </label>
             <div>
               <input
-                type="number"
+                type="text"
                 name="amount"
-                value={amount}
+                pattern="[0-9,.]"
+                required
+                value={amount.toLocaleString("en-US")}
                 onInput={handleChange}
                 className="inputField"
                 id="amount"
@@ -64,7 +70,10 @@ const Home = () => {
             <div>
               <input
                 type="text"
-                value={`${transferAmount.toFixed(2)}`}
+                value={`${transferAmount.toLocaleString("en-US", {
+                  maximumFractionDigits: 2,
+                  minimumFractionDigits: 2,
+                })}`}
                 readOnly
                 name="transferAmount"
                 className="inputField inputFieldEmphasis"
@@ -76,9 +85,13 @@ const Home = () => {
         </div>
         <div className="gridItem gridItemFull">
           <div className="inputGroup centerFlex">
-            <span className="labelText">You will be charged as E-Levy:</span>
+            <span className="labelText">E-Levy Charge:</span>
             <span className="displayText charge">
-              + GHS {`${elevyAmount.toFixed(2)}`}{" "}
+              + GHS{" "}
+              {`${elevyAmount.toLocaleString("en-US", {
+                maximumFractionDigits: 2,
+                minimumFractionDigits: 2,
+              })}`}
             </span>
             <span className="labelText">Rate: 1.5%, first 100GHS exempt</span>
           </div>
@@ -86,13 +99,13 @@ const Home = () => {
         <div className="gridItem gridItemFull">
           <div className="inputGroup centerFlex">
             <span className="disclaimer">
-              Disclaimer: Please Note while we did our best to provide accurate
-              results, we cannot be held responsible for differences in
-              real-world charges.
+              Disclaimer: While we did our best to provide accurate results, we
+              cannot be held responsible for differences in your real-world
+              experience.
             </span>
           </div>
         </div>
-      </div>
+      </form>
       {/* <span className="footer">Made with love</span> */}
     </main>
   );
