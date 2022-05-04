@@ -10,7 +10,6 @@ body {
 }
 
 /* containers */
-
 .mainContainer {
 	background-color: #0e1354;
 	background-image: url(/e-levy-calculator-gh/35c8c6cb9c3de92de531276ad1102079.png);
@@ -38,7 +37,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	grid-template-rows: auto;
-	padding: 10px;
+	padding: 20px;
 	grid-row-gap: 30px;
 	grid-column-gap: 60px;
 	-ms-flex-align: center;
@@ -48,7 +47,6 @@ body {
 .gridItem {
 	max-width: 100%;
 }
-
 
 .gridItem.gridItemFull {
 	grid-row: span 1;
@@ -135,7 +133,7 @@ body {
 }
 
 .inputFieldEmphasis {
-	outline: 4px solid #020315;
+	outline: 1px solid #020315;
 }
 
 /* Mobile view */
@@ -195,4 +193,4 @@ input[type=number] {
 	-moz-appearance: textfield;
 }
 
-/*# sourceMappingURL=ssr-bundle.c1ef3.css.map*/
+/*# sourceMappingURL=ssr-bundle.e6241.css.map*/
