@@ -91,6 +91,22 @@ body {
 	padding: 5 10px;
 }
 
+.disclaimer {
+	font-style: italic;
+	color: white;
+	font-size: 12px;
+	text-align: center;
+}
+
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	color: white;
+	font-size: 12px;
+	margin: 5px;
+}
+
 /* Inputs */
 .inputGroup {
 	display: -ms-flexbox;
@@ -152,18 +168,22 @@ body {
 		max-width: 100%;
 		font-size: 25px;
 	}
+
+	.disclaimer {
+		font-size: 7px;
+	}
 }
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+	-moz-appearance: textfield;
 }
 
-/*# sourceMappingURL=ssr-bundle.7610f.css.map*/
+/*# sourceMappingURL=ssr-bundle.25671.css.map*/
