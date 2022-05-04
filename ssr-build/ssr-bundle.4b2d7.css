@@ -6,7 +6,7 @@ body {
 
 @font-face {
 	font-family: "Gidole-Regular";
-	src: url(/8ce9f1aeb7bb35922c231b71f5dc00e3.ttf);
+	src: url(/e-levy-calculator-gh/8ce9f1aeb7bb35922c231b71f5dc00e3.ttf);
 }
 
 /* containers */
@@ -187,4 +187,4 @@ input[type=number] {
 	-moz-appearance: textfield;
 }
 
-/*# sourceMappingURL=ssr-bundle.08ed7.css.map*/
+/*# sourceMappingURL=ssr-bundle.4b2d7.css.map*/
