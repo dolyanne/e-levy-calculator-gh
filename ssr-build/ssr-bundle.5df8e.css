@@ -14,6 +14,7 @@ body {
 .mainContainer {
 	background-color: rgba(0, 82, 84, 1);
 	background-image: url(/e-levy-calculator-gh/35c8c6cb9c3de92de531276ad1102079.png);
+
 	background-blend-mode: multiply;
 	color: white;
 	width: 100%;
@@ -190,4 +191,4 @@ input[type=number] {
 	-moz-appearance: textfield;
 }
 
-/*# sourceMappingURL=ssr-bundle.2f33e.css.map*/
+/*# sourceMappingURL=ssr-bundle.5df8e.css.map*/
