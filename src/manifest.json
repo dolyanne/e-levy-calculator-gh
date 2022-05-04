@@ -1,7 +1,7 @@
 {
   "name": "E-Levy Calculator GH",
-  "short_name": "e-levy-gh",
-  "start_url": "/",
+  "short_name": "E-Levy GH",
+  "start_url": "/e-levy-calculator-gh/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",

@@ -7,6 +7,7 @@ const Home = () => {
   const [transferAmount, setTransferAmount] = useState(0);
   const [elevyAmount, setElevyAmount] = useState(0);
   let elevyFormRef = useRef(null);
+  let elevyChargeRef = useRef(null);
 
   useEffect(() => {
     if (amount == "") {
@@ -34,6 +35,12 @@ const Home = () => {
     }
   };
 
+  const handleTab = (event) => {
+    if (event.keyCode == 13) {
+      elevyChargeRef.current.focus();
+    }
+  };
+
   return (
     <main className="mainContainer">
       <form className="gridContainer" ref={elevyFormRef} method="POST">
@@ -49,14 +56,18 @@ const Home = () => {
             </label>
             <div>
               <input
+                tabIndex={1}
                 type="text"
                 name="amount"
+                placeholder="0"
                 pattern="[0-9,.]"
+                inputMode="numeric"
                 required
                 value={amount.toLocaleString("en-US")}
                 onInput={handleChange}
                 className="inputField"
                 id="amount"
+                onKeyUp={handleTab}
               />
               <span className="currency">GHS</span>
             </div>
@@ -86,7 +97,11 @@ const Home = () => {
         <div className="gridItem gridItemFull">
           <div className="inputGroup centerFlex">
             <span className="labelText">E-Levy Charge:</span>
-            <span className="displayText charge">
+            <span
+              className="displayText charge"
+              tabIndex={2}
+              ref={elevyChargeRef}
+            >
               + GHS{" "}
               {`${elevyAmount.toLocaleString("en-US", {
                 maximumFractionDigits: 2,

@@ -12,8 +12,8 @@ body {
 /* containers */
 .mainContainer {
 	background-color: #0e1354;
-	background-image: url("./../assets/white-waves.png");
-	background-blend-mode: multiply;
+	/* background-image: url("./../assets/white-waves.png"); */
+	/* background-blend-mode: multiply; */
 	color: white;
 	width: 100%;
 	min-height: 100vh;
