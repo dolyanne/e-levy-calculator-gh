@@ -48,7 +48,7 @@ const Home = () => {
                 type="number"
                 name="amount"
                 value={amount}
-                onChange={handleChange}
+                onInput={handleChange}
                 className="inputField"
                 id="amount"
               />

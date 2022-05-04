@@ -12,13 +12,16 @@ body {
 /* containers */
 
 .mainContainer {
-	background: #0e1354;
+	background-color: rgba(0, 82, 84, 1);
+	background-image: url(/e-levy-calculator-gh/35c8c6cb9c3de92de531276ad1102079.png);
+
+	background-blend-mode: multiply;
 	color: white;
 	width: 100%;
 	min-height: 100vh;
 	font-family: "Gidole-Regular";
 	letter-spacing: 1px;
-	font-weight: 500;
+	font-weight: 700;
 	font-size: 20px;
 	margin: 0;
 	padding: 0;
@@ -26,8 +29,8 @@ body {
 	display: flex;
 	-ms-flex-direction: column;
 	    flex-direction: column;
-	-ms-flex-pack: center;
-	    justify-content: center;
+	-ms-flex-pack: space-evenly;
+	    justify-content: space-evenly;
 	-ms-flex-align: center;
 	    align-items: center;
 }
@@ -62,7 +65,7 @@ body {
 
 /* Text Elements */
 .labelText {
-	font-weight: 400;
+	font-weight: 500;
 	font-size: 16px;
 	color: rgb(201, 201, 201);
 	margin: 15px;
@@ -86,12 +89,13 @@ body {
 }
 
 .charge {
-	background-color: #e84a46;
+	background-color: rgb(84, 1, 0);
 	border-radius: 5px;
 	padding: 5 10px;
 }
 
 .disclaimer {
+	font-weight: 500;
 	font-style: italic;
 	color: white;
 	font-size: 12px;
@@ -117,13 +121,13 @@ body {
 }
 
 .inputField {
-	border: 1px solid #00043c;
+	border: 1px solid rgb(2, 34, 34);
 	border-radius: 5px;
 	max-width: 100%;
 	font-size: 35px;
 	color: white;
 	padding: 10px 20px;
-	background-color: #00043c;
+	background-color: rgb(2, 34, 34);
 	box-sizing: border-box;
 	width: 100%;
 }
@@ -171,7 +175,7 @@ body {
 	}
 
 	.disclaimer {
-		font-size: 7px;
+		font-size: 8px;
 	}
 }
 
@@ -187,4 +191,4 @@ input[type=number] {
 	-moz-appearance: textfield;
 }
 
-/*# sourceMappingURL=ssr-bundle.4b2d7.css.map*/
+/*# sourceMappingURL=ssr-bundle.5df8e.css.map*/
