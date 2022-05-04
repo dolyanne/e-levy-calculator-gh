@@ -12,7 +12,7 @@ body {
 /* containers */
 
 .mainContainer {
-	background: rgba(0, 82, 84, 1);
+	background: #0e1354;
 	color: white;
 	width: 100%;
 	min-height: 100vh;
@@ -80,7 +80,7 @@ body {
 }
 
 .charge {
-	background-color: rgb(84, 1, 0);
+	background-color: #e84a46;
 	border-radius: 5px;
 	padding: 5 10px;
 }
@@ -109,14 +109,15 @@ body {
 }
 
 .inputField {
-	border: 1px solid rgb(2, 34, 34);
+	border: 1px solid #00043c;
 	border-radius: 5px;
 	max-width: 100%;
 	font-size: 35px;
 	color: white;
 	padding: 10px 20px;
-	background-color: rgb(2, 34, 34);
+	background-color: #00043c;
 	box-sizing: border-box;
+	width: 100%;
 }
 
 .inputField:focus {
