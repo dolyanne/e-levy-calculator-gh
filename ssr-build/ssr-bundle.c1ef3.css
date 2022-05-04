@@ -6,14 +6,14 @@ body {
 
 @font-face {
 	font-family: "Gidole-Regular";
-	src: url(/8ce9f1aeb7bb35922c231b71f5dc00e3.ttf);
+	src: url(/e-levy-calculator-gh/8ce9f1aeb7bb35922c231b71f5dc00e3.ttf);
 }
 
 /* containers */
 
 .mainContainer {
 	background-color: #0e1354;
-	background-image: url(/35c8c6cb9c3de92de531276ad1102079.png);
+	background-image: url(/e-levy-calculator-gh/35c8c6cb9c3de92de531276ad1102079.png);
 	background-blend-mode: multiply;
 	color: white;
 	width: 100%;
@@ -195,4 +195,4 @@ input[type=number] {
 	-moz-appearance: textfield;
 }
 
-/*# sourceMappingURL=ssr-bundle.d7720.css.map*/
+/*# sourceMappingURL=ssr-bundle.c1ef3.css.map*/
