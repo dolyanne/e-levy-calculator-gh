@@ -76,7 +76,7 @@ const Home = () => {
         </div>
         <div className="gridItem gridItemFull">
           <div className="inputGroup centerFlex">
-            <span className="labelText">You are being charged as E-Levy:</span>
+            <span className="labelText">You will be charged as E-Levy:</span>
             <span className="displayText charge">
               + GHS {`${elevyAmount.toFixed(2)}`}{" "}
             </span>
