@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZD943XK4VR"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-ZD943XK4VR");
+    </script>
     <meta charset="utf-8" />
     <title><% preact.title %> | Calculate Ghana's E-Levy Charge</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -17,18 +29,6 @@
       href="https://dolyanne.github.io/e-levy-calculator-gh/"
     />
     <% preact.headEnd %>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-ZD943XK4VR"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-ZD943XK4VR");
-    </script>
   </head>
   <body>
     <% preact.bodyEnd %>
