@@ -116,7 +116,7 @@ const Home = () => {
             <span className="disclaimer">
               Disclaimer: While we did our best to provide accurate results, we
               cannot be held responsible for differences in your real-world
-              experience.
+              experience.Kindly note that current implementation is exempt of telco charges
             </span>
           </div>
         </div>
