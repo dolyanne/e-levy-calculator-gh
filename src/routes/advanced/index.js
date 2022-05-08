@@ -2,9 +2,14 @@ import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
 import Picker from "../../components/form/picker";
 import { to, from } from "../../data/platforms";
+import {
+  getElevyCharge,
+  exemption,
+  getTaxableAmount,
+  elevyTax
+} from "../../utils/calculations";
 
 const Advanced = () => {
-  const elevyTax = 0.015; //1.5/100
   const [amount, setAmount] = useState("");
   const [previousAmount, setPreviousAmount] = useState("");
   const [sendingFrom, setSendingFrom] = useState("");
@@ -22,6 +27,7 @@ const Advanced = () => {
       setTransferAmount(0);
       setElevyAmount(0);
     } else if (previousAmount !== "") {
+      
       let exempt = exemption(previousAmount);
       let taxableAmount = getTaxableAmount(amount, exempt);
       let elevyCharge = getElevyCharge(taxableAmount, elevyTax);
@@ -68,28 +74,6 @@ const Advanced = () => {
     setPickerType(type);
   };
 
-  function exemption(previousAmount) {
-    let finalExemptionAmount = 0;
-    let initialExemptAmount = 100;
-    if (previousAmount >= initialExemptAmount) {
-      finalExemptionAmount = 0; //  user has used up all exemption value for the day and therefore has no exemptions left
-    } else if (previousAmount < initialExemptAmount) {
-      finalExemptionAmount = initialExemptAmount - previousAmount;
-    } else {
-      finalExemptionAmount = initialExemptAmount;
-    }
-    return finalExemptionAmount;
-  }
-  function getTaxableAmount(amount, exempt) {
-    let taxableAmount = amount - exempt;
-
-    return taxableAmount;
-  }
-
-  function getElevyCharge(taxableAmount, elevyTax) {
-    let elevyCharge = taxableAmount * elevyTax;
-    return elevyCharge;
-  }
   return (
     <main className="mainContainer">
       <form className="gridContainer" ref={elevyFormRef} method="POST">
