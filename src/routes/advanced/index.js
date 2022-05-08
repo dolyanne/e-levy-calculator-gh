@@ -6,18 +6,22 @@ import {
   getElevyCharge,
   exemption,
   getTaxableAmount,
-  elevyTax
+  elevyTax,
+  getPlatformCharge,
 } from "../../utils/calculations";
 
 const Advanced = () => {
   const [amount, setAmount] = useState("");
   const [previousAmount, setPreviousAmount] = useState("");
   const [sendingFrom, setSendingFrom] = useState("");
+  const [sendingFromKey, setSendingFromKey] = useState("");
   const [sendingTo, setSendingTo] = useState("");
+  const [sendingToKey, setSendingToKey] = useState("");
   const [showPicker, setShowPicker] = useState(false);
   const [pickerType, setPickerType] = useState("");
   const [transferAmount, setTransferAmount] = useState(0);
   const [elevyAmount, setElevyAmount] = useState(0);
+  const [platformCharge, setPlatformCharge] = useState(0);
   //const [elevyAmount, setElevyAmount] = useState(0);
   let elevyFormRef = useRef(null);
   let elevyChargeRef = useRef(null);
@@ -27,23 +31,54 @@ const Advanced = () => {
       setTransferAmount(0);
       setElevyAmount(0);
     } else if (previousAmount !== "") {
-      
       let exempt = exemption(previousAmount);
       let taxableAmount = getTaxableAmount(amount, exempt);
       let elevyCharge = getElevyCharge(taxableAmount, elevyTax);
       let totalTransferAmount = amount + elevyCharge;
+      if (sendingFrom !== "" && sendingTo !== "") {
+        setPlatformCharge(
+          getPlatformCharge({
+            source: sendingFromKey,
+            destination: sendingToKey,
+            amount,
+          })
+        );
+      } else if (sendingTo !== "") {
+        setPlatformCharge(
+          getPlatformCharge({
+            destination: sendingFromKey,
+            source: sendingFromKey,
+            amount,
+          })
+        );
+      }
       setTransferAmount(totalTransferAmount);
       setElevyAmount(elevyCharge);
-    }
-
-    // else if (amount > 100) {
-    //   let taxableAmount = amount - 100;
-    //   let elevyCharge = taxableAmount * elevyTax;
-    //   let totalTransferAmount = amount + elevyCharge;
-    //   setTransferAmount(totalTransferAmount);
-    //   setElevyAmount(elevyCharge);
-    // }
-    else {
+    } else if (amount > 0) {
+      let exempt = exemption(0);
+      let taxableAmount = getTaxableAmount(amount, exempt);
+      let elevyCharge = getElevyCharge(taxableAmount, elevyTax);
+      let totalTransferAmount = amount + elevyCharge;
+      if (sendingFrom !== "" && sendingTo !== "") {
+        setPlatformCharge(
+          getPlatformCharge({
+            source: sendingFromKey,
+            destination: sendingToKey,
+            amount,
+          })
+        );
+      } else if (sendingTo !== "") {
+        setPlatformCharge(
+          getPlatformCharge({
+            destination: sendingFromKey,
+            source: sendingFromKey,
+            amount,
+          })
+        );
+      }
+      setTransferAmount(totalTransferAmount);
+      setElevyAmount(elevyCharge);
+    } else {
       setTransferAmount(amount);
       setElevyAmount(0);
     }
@@ -174,7 +209,10 @@ const Advanced = () => {
               tabIndex={2}
               ref={elevyChargeRef}
             >
-              X GHS
+              {`${elevyAmount.toLocaleString("en-US", {
+                maximumFractionDigits: 2,
+                minimumFractionDigits: 2,
+              })} GHS`}
             </span>
           </div>
         </div>
@@ -182,7 +220,10 @@ const Advanced = () => {
           <div className="inputGroup">
             <span className="labelText">Platform Charge:</span>
             <span className="displayText" tabIndex={2} ref={elevyChargeRef}>
-              X GHS
+              {`${platformCharge.toLocaleString("en-US", {
+                maximumFractionDigits: 2,
+                minimumFractionDigits: 2,
+              })} GHS`}
             </span>
           </div>
         </div>
@@ -195,7 +236,7 @@ const Advanced = () => {
               ref={elevyChargeRef}
             >
               + GHS{" "}
-              {`${elevyAmount.toLocaleString("en-US", {
+              {`${(elevyAmount + platformCharge).toLocaleString("en-US", {
                 maximumFractionDigits: 2,
                 minimumFractionDigits: 2,
               })}`}
@@ -211,25 +252,32 @@ const Advanced = () => {
               ref={elevyChargeRef}
             >
               + GHS{" "}
-              {`${elevyAmount.toLocaleString("en-US", {
-                maximumFractionDigits: 2,
-                minimumFractionDigits: 2,
-              })}`}
+              {`${(elevyAmount + platformCharge + amount).toLocaleString(
+                "en-US",
+                {
+                  maximumFractionDigits: 2,
+                  minimumFractionDigits: 2,
+                }
+              )}`}
             </span>
           </div>
         </div>
         {showPicker && pickerType === "from" && (
           <Picker
             data={from}
+            title="You are sending money from"
             close={() => setShowPicker(false)}
-            updateChoice={setSendingFrom}
+            updateChoiceForView={setSendingFrom}
+            updateChoice={setSendingFromKey}
           />
         )}
         {showPicker && pickerType === "to" && (
           <Picker
             data={to}
+            title="You are sending money to someone with"
             close={() => setShowPicker(false)}
-            updateChoice={setSendingTo}
+            updateChoiceForView={setSendingTo}
+            updateChoice={setSendingToKey}
           />
         )}
         <div className="gridItem gridItemFull">

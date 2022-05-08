@@ -1,3 +1,5 @@
+import { platformsMap } from "../data/platform-map";
+
 export const elevyTax = 0.015; //1.5/100
 
 export function exemption(previousAmount) {
@@ -15,8 +17,8 @@ export function exemption(previousAmount) {
 
 export function getTaxableAmount(amount, exempt) {
   let taxableAmount = amount - exempt;
-  if(taxableAmount<0){
-      return 0;
+  if (taxableAmount < 0) {
+    return 0;
   }
 
   return taxableAmount;
@@ -33,4 +35,15 @@ export function calculateCharge({ previousAmount, amount }) {
   let taxableAmount = getTaxableAmount(amount, exempt);
   let elevyCharge = getElevyCharge(taxableAmount, elevyTax);
   return elevyCharge;
+}
+
+export function getPlatformCharge({ source, destination, amount }) {
+  // get platform charge for momo
+  const platformFunction = platformsMap[source];
+  const platformCharge = platformFunction({
+    source,
+    destination,
+    amount,
+  });
+  return platformCharge;
 }

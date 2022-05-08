@@ -1,17 +1,18 @@
 import { h } from "preact";
 import PickerItem from "./picker-item";
 
-const Picker = ({ data, close, updateChoice }) => {
+const Picker = ({ title, data, close, updateChoice, updateChoiceForView }) => {
   return (
     <div className="overlayContainer">
       <div className="pickerContainer">
-        <span>Choose where you are sending from</span>
+        <span>{title}</span>
         <div className="pickerItemContainer">
           {data.map((item) => (
             <PickerItem
               title={item.name}
               handleSelect={() => {
-                updateChoice(item.name);
+                updateChoice(item.key);
+                updateChoiceForView(item.name);
                 close();
                 return false;
               }}
