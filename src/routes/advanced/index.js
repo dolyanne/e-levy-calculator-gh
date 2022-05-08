@@ -82,7 +82,7 @@ const Advanced = () => {
       setTransferAmount(amount);
       setElevyAmount(0);
     }
-  }, [amount, previousAmount]);
+  }, [amount, previousAmount, sendingFrom, sendingTo]);
 
   const handleChange = (event, callback) => {
     const parsedAmount = parseInt(event.target.value.replaceAll(",", ""), 10);
