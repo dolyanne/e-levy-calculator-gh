@@ -13,6 +13,7 @@ const Advanced = () => {
   const [pickerType, setPickerType] = useState("");
   const [transferAmount, setTransferAmount] = useState(0);
   const [elevyAmount, setElevyAmount] = useState(0);
+  //const [elevyAmount, setElevyAmount] = useState(0);
   let elevyFormRef = useRef(null);
   let elevyChargeRef = useRef(null);
 
@@ -20,17 +21,27 @@ const Advanced = () => {
     if (amount == "") {
       setTransferAmount(0);
       setElevyAmount(0);
-    } else if (amount > 100) {
-      let taxableAmount = amount - 100;
-      let elevyCharge = taxableAmount * elevyTax;
+    } else if (previousAmount !== "") {
+      let exempt = exemption(previousAmount);
+      let taxableAmount = getTaxableAmount(amount, exempt);
+      let elevyCharge = getElevyCharge(taxableAmount, elevyTax);
       let totalTransferAmount = amount + elevyCharge;
       setTransferAmount(totalTransferAmount);
       setElevyAmount(elevyCharge);
-    } else {
+    }
+
+    // else if (amount > 100) {
+    //   let taxableAmount = amount - 100;
+    //   let elevyCharge = taxableAmount * elevyTax;
+    //   let totalTransferAmount = amount + elevyCharge;
+    //   setTransferAmount(totalTransferAmount);
+    //   setElevyAmount(elevyCharge);
+    // }
+    else {
       setTransferAmount(amount);
       setElevyAmount(0);
     }
-  }, [amount]);
+  }, [amount, previousAmount]);
 
   const handleChange = (event, callback) => {
     const parsedAmount = parseInt(event.target.value.replaceAll(",", ""), 10);
@@ -56,6 +67,29 @@ const Advanced = () => {
     setShowPicker(true);
     setPickerType(type);
   };
+
+  function exemption(previousAmount) {
+    let finalExemptionAmount = 0;
+    let initialExemptAmount = 100;
+    if (previousAmount >= initialExemptAmount) {
+      finalExemptionAmount = 0; //  user has used up all exemption value for the day and therefore has no exemptions left
+    } else if (previousAmount < initialExemptAmount) {
+      finalExemptionAmount = initialExemptAmount - previousAmount;
+    } else {
+      finalExemptionAmount = initialExemptAmount;
+    }
+    return finalExemptionAmount;
+  }
+  function getTaxableAmount(amount, exempt) {
+    let taxableAmount = amount - exempt;
+
+    return taxableAmount;
+  }
+
+  function getElevyCharge(taxableAmount, elevyTax) {
+    let elevyCharge = taxableAmount * elevyTax;
+    return elevyCharge;
+  }
   return (
     <main className="mainContainer">
       <form className="gridContainer" ref={elevyFormRef} method="POST">
