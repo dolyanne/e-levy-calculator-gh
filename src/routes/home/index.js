@@ -49,7 +49,7 @@ const Home = () => {
             <h1 className="displayText">E-LEVY CALCULATOR</h1>
           </div>
         </div>
-        <div className="gridItem">
+        <div className="gridItem gridItemFullMobileOnly">
           <div className="inputGroup">
             <label for="amount" className="labelText">
               You want to send:
@@ -73,7 +73,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="gridItem">
+        <div className="gridItem gridItemFullMobileOnly">
           <div className="inputGroup">
             <label for="transferAmount" className="labelText">
               You will pay:
