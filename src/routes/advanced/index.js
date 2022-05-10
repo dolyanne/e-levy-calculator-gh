@@ -254,7 +254,7 @@ const Advanced = ({ showSimple }) => {
                 return false;
               }}
             >
-              Show Simple
+              Calculate e-levy Only!
             </button>
           </div>
         </div>

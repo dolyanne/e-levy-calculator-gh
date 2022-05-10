@@ -122,7 +122,7 @@ const Home = ({ showAdvanced }) => {
                 return false;
               }}
             >
-              Show Advanced Options
+              Click to Show more Options
             </button>
           </div>
         </div>
