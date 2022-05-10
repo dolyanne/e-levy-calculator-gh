@@ -133,6 +133,11 @@ body {
   box-sizing: border-box;
 }
 
+.small {
+  margin: 5px;
+  font-size: 14px;
+}
+
 .displayText {
   max-width: 100%;
   font-size: 35px;

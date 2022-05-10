@@ -23,7 +23,10 @@ const Advanced = ({ showSimple }) => {
   const [pickerType, setPickerType] = useState("");
   const [transferAmount, setTransferAmount] = useState(0);
   const [elevyAmount, setElevyAmount] = useState(0);
+  const [exempt, setExempt] = useState(100);
   const [platformCharge, setPlatformCharge] = useState(0);
+  const [platformRate, setPlatformRate] = useState(0);
+  const [platformExempt, setPlatformExempt] = useState(0);
   //const [elevyAmount, setElevyAmount] = useState(0);
   let elevyFormRef = useRef(null);
   let elevyChargeRef = useRef(null);
@@ -40,11 +43,13 @@ const Advanced = ({ showSimple }) => {
       calculatePlatformCharge();
       setTransferAmount(totalTransferAmount);
       setElevyAmount(elevyCharge);
+      setExempt(exempt);
     } else if (amount > 0) {
       let exempt = exemption(0);
       let taxableAmount = getTaxableAmount(amount, exempt);
       let elevyCharge = getElevyCharge(taxableAmount, elevyTax);
       let totalTransferAmount = amount + elevyCharge;
+      setExempt(exempt);
       calculatePlatformCharge();
       setTransferAmount(totalTransferAmount);
       setElevyAmount(elevyCharge);
@@ -56,21 +61,24 @@ const Advanced = ({ showSimple }) => {
 
   const calculatePlatformCharge = () => {
     if (sendingFrom !== "" && sendingTo !== "") {
-      setPlatformCharge(
-        getPlatformCharge({
-          source: sendingFromKey,
-          destination: sendingToKey,
-          amount,
-        })
-      );
+      const platformChargeData = getPlatformCharge({
+        source: sendingFromKey,
+        destination: sendingToKey,
+        amount,
+      });
+      setPlatformCharge(platformChargeData.charge);
+      setPlatformExempt(platformChargeData.exempt);
+      setPlatformRate(platformChargeData.rate);
     } else if (sendingFrom !== "") {
-      setPlatformCharge(
-        getPlatformCharge({
-          destination: sendingFromKey,
-          source: sendingFromKey,
-          amount,
-        })
-      );
+      const platformChargeData = getPlatformCharge({
+        destination: sendingFromKey,
+        source: sendingFromKey,
+        amount,
+      });
+
+      setPlatformCharge(platformChargeData.charge);
+      setPlatformExempt(platformChargeData.exempt);
+      setPlatformRate(platformChargeData.rate);
     }
   };
 
@@ -198,6 +206,9 @@ const Advanced = ({ showSimple }) => {
                 minimumFractionDigits: 2,
               })} GHS`}
             </span>
+            <span className="labelText small alignRight">
+              1.5%, {exempt}GHS exempt
+            </span>
           </div>
         </GridItem>
         <GridItem extraClasses="noMargin">
@@ -208,6 +219,9 @@ const Advanced = ({ showSimple }) => {
                 maximumFractionDigits: 2,
                 minimumFractionDigits: 2,
               })} GHS`}
+            </span>
+            <span className="labelText small">
+              {`${platformRate}%, <${platformExempt}GHS exempt`}
             </span>
           </div>
         </GridItem>

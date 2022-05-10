@@ -37,14 +37,14 @@ describe("Testing platform tariffs", () => {
     test(`Testing sending GHS ${amount} from ${source} to ${destination}`, () => {
       // get platform charge for momo
       const platformFunction = platformsMap[source];
-      const platformCharge = platformFunction({
+      const { charge } = platformFunction({
         source,
         destination,
         amount,
       });
 
       // actual test
-      expect(platformCharge).toBe(correctCharge);
+      expect(charge).toBe(correctCharge);
     });
   });
 });
