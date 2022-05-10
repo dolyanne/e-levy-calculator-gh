@@ -1,9 +1,13 @@
 import { h } from "preact";
 
-const PickerItem = ({ title, handleSelect }) => {
+const PickerItem = ({ title, handleSelect, customTheme }) => {
   return (
-    <div className="pickerItem" role="button" onClick={handleSelect}>
-      <span>{title}</span>
+    <div
+      className={`pickerItem ${!!customTheme ? customTheme : ""}`}
+      role="button"
+      onClick={handleSelect}
+    >
+      <span className="pickerContent">{title}</span>
     </div>
   );
 };

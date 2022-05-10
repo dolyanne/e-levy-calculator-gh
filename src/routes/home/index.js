@@ -1,7 +1,7 @@
 import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
 
-const Home = () => {
+const Home = ({ showAdvanced }) => {
   const elevyTax = 0.015; //1.5/100
   const [amount, setAmount] = useState("");
   const [transferAmount, setTransferAmount] = useState(0);
@@ -30,7 +30,7 @@ const Home = () => {
     if (!isNaN(parsedAmount)) {
       setAmount(parsedAmount);
     } else {
-      elevyFormRef.current.reportValidity();
+      // elevyFormRef.current.reportValidity();
       setAmount("");
     }
   };
@@ -56,13 +56,13 @@ const Home = () => {
             </label>
             <div>
               <input
-                tabIndex={1}
+                // tabIndex={1}
                 type="text"
                 name="amount"
                 placeholder="0"
                 pattern="[0-9,.]"
                 inputMode="numeric"
-                required
+                // required
                 value={amount.toLocaleString("en-US")}
                 onInput={handleChange}
                 className="inputField"
@@ -99,7 +99,7 @@ const Home = () => {
             <span className="labelText">E-Levy Charge:</span>
             <span
               className="displayText charge"
-              tabIndex={2}
+              // tabIndex={2}
               ref={elevyChargeRef}
             >
               + GHS{" "}
@@ -113,10 +113,24 @@ const Home = () => {
         </div>
         <div className="gridItem gridItemFull">
           <div className="inputGroup centerFlex">
+            <button
+              className="labelText button"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                showAdvanced();
+                return false;
+              }}
+            >
+              Show Advanced Options
+            </button>
+          </div>
+        </div>
+        <div className="gridItem gridItemFull">
+          <div className="inputGroup centerFlex">
             <span className="disclaimer">
-              Disclaimer: While we did our best to provide accurate results, we
-              cannot be held responsible for differences in your real-world
-              experience.Kindly note that current implementation is exempt of telco charges
+              Disclaimer: We did our best to provide accurate results, however
+              you may experience differences in real-world usage.
             </span>
           </div>
         </div>

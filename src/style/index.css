@@ -10,9 +10,13 @@ body {
 
 /* containers */
 .mainContainer {
-  background-color: #0e1354;
-  /* background-image: url("./../assets/white-waves.png"); */
-  /* background-blend-mode: multiply; */
+  background: rgb(21, 27, 106);
+  background: linear-gradient(
+    0deg,
+    rgba(21, 27, 106, 1) 0%,
+    rgba(20, 27, 104, 1) 33%,
+    rgba(13, 18, 76, 1) 67%
+  );
   color: white;
   width: 100%;
   min-height: 100vh;
@@ -32,14 +36,18 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: auto;
-  padding: 20px;
-  grid-row-gap: 30px;
-  grid-column-gap: 60px;
+  padding: 10px;
+  grid-row-gap: 15px;
   align-items: center;
 }
 
 .gridItem {
   max-width: 100%;
+  margin: 0 20px;
+}
+
+.noMargin {
+  margin: 0;
 }
 
 .gridItem.gridItemFull {
@@ -66,7 +74,7 @@ body {
 
 .pickerContainer {
   border: 1px solid #00043c;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 80%;
   padding: 20px;
   max-width: 300px;
@@ -80,25 +88,38 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   padding-top: 20px;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .pickerItem {
   background-color: #0b0f46;
   height: 100px;
   width: 45%;
-  margin: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-end;
+  text-align: right;
   border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: normal;
+}
+
+.pointer {
   cursor: pointer;
 }
 
 .pickerItem:hover {
   background-color: #01086b;
+}
+
+.pickerContent {
+  padding: 10px;
+}
+
+.divider {
+  border-right: 1px solid rgb(127, 123, 123);
 }
 
 /* Text Elements */
@@ -131,6 +152,20 @@ body {
   padding: 5 10px;
 }
 
+.button {
+  background-color: #01c4ff;
+  border: 0px;
+  border-radius: 5px;
+  padding: 7px;
+  color: white;
+  font-family: "Gidole-Regular";
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0492bd;
+}
+
 .disclaimer {
   font-weight: 500;
   color: white;
@@ -140,6 +175,14 @@ body {
 
 .alignRight {
   text-align: right;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.payment {
+  width: fit-content;
 }
 
 .footer {
@@ -157,6 +200,10 @@ body {
   max-width: 100%;
 }
 
+.centerFlex .inputGroup {
+  align-items: center;
+}
+
 .inputField {
   border: 1px solid #00043c;
   border-radius: 5px;
@@ -167,6 +214,7 @@ body {
   background-color: #00043c;
   box-sizing: border-box;
   width: 100%;
+  font-family: "Gidole-Regular";
 }
 
 .inputFieldText {
@@ -179,6 +227,7 @@ body {
   background-color: #00043c;
   box-sizing: border-box;
   width: 100%;
+  font-family: "Gidole-Regular";
 }
 
 .inputField:focus {
@@ -192,15 +241,19 @@ body {
 /* Mobile view */
 @media only screen and (max-width: 600px) {
   .mainContainer {
-    padding-top: 50px;
-    justify-content: start;
+    justify-content: center;
   }
 
   .gridContainer {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto;
+    grid-column-gap: 0px;
     max-width: 100%;
+  }
+
+  .gridItem {
+    margin: 0;
   }
 
   .gridItem.gridItemFull {
@@ -219,11 +272,17 @@ body {
     grid-row: span 1;
     grid-column: span 1;
     max-width: 100%;
+    margin: 0 20px;
   }
 
   .inputField {
-    font-size: 25px;
+    font-size: 20px;
     box-sizing: border-box;
+  }
+
+  .inputFieldText {
+    font-size: 18px;
+    padding: 10px 12px;
   }
 
   .inputFieldEmphasis {
@@ -231,13 +290,13 @@ body {
   }
 
   .currency {
-    font-size: 25px;
-    margin-left: -70px;
+    font-size: 18px;
+    margin-left: -60px;
   }
 
   .displayText {
     max-width: 100%;
-    font-size: 25px;
+    font-size: 22px;
   }
 
   .disclaimer {
@@ -246,6 +305,10 @@ body {
 
   .resetFormattingMobile {
     text-align: left;
+  }
+
+  .labelText {
+    font-size: 14px;
   }
 }
 
@@ -259,4 +322,25 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* themes */
+.vodafone {
+  background-color: #e60000;
+  opacity: 0.8;
+  color: white;
+}
+
+.vodafone:hover {
+  background-color: #e34b4b;
+}
+
+.mtn {
+  background-color: #ffcc00;
+  opacity: 0.8;
+  color: black;
+}
+
+.mtn:hover {
+  background-color: #ffdc4e;
 }

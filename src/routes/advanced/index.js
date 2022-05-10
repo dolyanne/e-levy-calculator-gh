@@ -1,5 +1,7 @@
 import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
+import GridItem from "../../components/containers/grid-item";
+import MainContainer from "../../components/containers/main-container";
 import Picker from "../../components/form/picker";
 import { to, from } from "../../data/platforms";
 import {
@@ -10,7 +12,7 @@ import {
   getPlatformCharge,
 } from "../../utils/calculations";
 
-const Advanced = () => {
+const Advanced = ({ showSimple }) => {
   const [amount, setAmount] = useState("");
   const [previousAmount, setPreviousAmount] = useState("");
   const [sendingFrom, setSendingFrom] = useState("");
@@ -35,23 +37,7 @@ const Advanced = () => {
       let taxableAmount = getTaxableAmount(amount, exempt);
       let elevyCharge = getElevyCharge(taxableAmount, elevyTax);
       let totalTransferAmount = amount + elevyCharge;
-      if (sendingFrom !== "" && sendingTo !== "") {
-        setPlatformCharge(
-          getPlatformCharge({
-            source: sendingFromKey,
-            destination: sendingToKey,
-            amount,
-          })
-        );
-      } else if (sendingTo !== "") {
-        setPlatformCharge(
-          getPlatformCharge({
-            destination: sendingFromKey,
-            source: sendingFromKey,
-            amount,
-          })
-        );
-      }
+      calculatePlatformCharge();
       setTransferAmount(totalTransferAmount);
       setElevyAmount(elevyCharge);
     } else if (amount > 0) {
@@ -59,23 +45,7 @@ const Advanced = () => {
       let taxableAmount = getTaxableAmount(amount, exempt);
       let elevyCharge = getElevyCharge(taxableAmount, elevyTax);
       let totalTransferAmount = amount + elevyCharge;
-      if (sendingFrom !== "" && sendingTo !== "") {
-        setPlatformCharge(
-          getPlatformCharge({
-            source: sendingFromKey,
-            destination: sendingToKey,
-            amount,
-          })
-        );
-      } else if (sendingTo !== "") {
-        setPlatformCharge(
-          getPlatformCharge({
-            destination: sendingFromKey,
-            source: sendingFromKey,
-            amount,
-          })
-        );
-      }
+      calculatePlatformCharge();
       setTransferAmount(totalTransferAmount);
       setElevyAmount(elevyCharge);
     } else {
@@ -83,6 +53,26 @@ const Advanced = () => {
       setElevyAmount(0);
     }
   }, [amount, previousAmount, sendingFrom, sendingTo]);
+
+  const calculatePlatformCharge = () => {
+    if (sendingFrom !== "" && sendingTo !== "") {
+      setPlatformCharge(
+        getPlatformCharge({
+          source: sendingFromKey,
+          destination: sendingToKey,
+          amount,
+        })
+      );
+    } else if (sendingFrom !== "") {
+      setPlatformCharge(
+        getPlatformCharge({
+          destination: sendingFromKey,
+          source: sendingFromKey,
+          amount,
+        })
+      );
+    }
+  };
 
   const handleChange = (event, callback) => {
     const parsedAmount = parseInt(event.target.value.replaceAll(",", ""), 10);
@@ -110,54 +100,14 @@ const Advanced = () => {
   };
 
   return (
-    <main className="mainContainer">
+    <MainContainer>
       <form className="gridContainer" ref={elevyFormRef} method="POST">
-        <div className="gridItem gridItemFull">
+        <GridItem extraClasses="gridItemFull">
           <div className="inputGroup centerFlex">
             <h1 className="displayText">E-LEVY CALCULATOR</h1>
           </div>
-        </div>
-        <div className="gridItem gridItemFullMobileOnly">
-          <div className="inputGroup">
-            <label for="sendingFrom" className="labelText">
-              You are sending from:
-            </label>
-            <div>
-              <input
-                type="text"
-                name="sendingFrom"
-                placeholder="Click to Select"
-                onFocus={(e) => handlePlatformChoice(e, "from")}
-                required
-                readOnly
-                value={sendingFrom}
-                className="inputFieldText"
-                id="sendingFrom"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="gridItem gridItemFullMobileOnly">
-          <div className="inputGroup">
-            <label for="sendingTo" className="labelText">
-              You are sending to:
-            </label>
-            <div>
-              <input
-                type="text"
-                name="sendingTo"
-                placeholder="Click to Select"
-                required
-                value={sendingTo}
-                readOnly
-                onFocus={(e) => handlePlatformChoice(e, "to")}
-                className="inputFieldText"
-                id="sendingTo"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="gridItem gridItemFullMobileOnly">
+        </GridItem>
+        <GridItem extraClasses="gridItemFullMobileOnly">
           <div className="inputGroup">
             <label for="amount" className="labelText">
               You want to send:
@@ -178,11 +128,12 @@ const Advanced = () => {
               <span className="currency">GHS</span>
             </div>
           </div>
-        </div>
-        <div className="gridItem gridItemFullMobileOnly">
+        </GridItem>
+
+        <GridItem extraClasses="gridItem gridItemFullMobileOnly">
           <div className="inputGroup">
             <label for="previousAmount" className="labelText">
-              You already sent today:
+              You have already sent today: (optional)
             </label>
             <div>
               <input
@@ -191,7 +142,6 @@ const Advanced = () => {
                 placeholder="0"
                 pattern="[0-9,.]"
                 inputMode="numeric"
-                required
                 value={previousAmount.toLocaleString("en-US")}
                 onInput={(e) => handleChange(e, setPreviousAmount)}
                 className="inputField"
@@ -200,58 +150,75 @@ const Advanced = () => {
               <span className="currency">GHS</span>
             </div>
           </div>
-        </div>
-        <div className="gridItem">
+        </GridItem>
+        <GridItem extraClasses="gridItemFullMobileOnly">
           <div className="inputGroup">
+            <label for="sendingFrom" className="labelText">
+              You are sending from: (optional)
+            </label>
+            <div>
+              <input
+                type="text"
+                name="sendingFrom"
+                placeholder="Click to Select"
+                onFocus={(e) => handlePlatformChoice(e, "from")}
+                readOnly
+                value={sendingFrom}
+                className={`inputFieldText`}
+                id="sendingFrom"
+              />
+            </div>
+          </div>
+        </GridItem>
+        <GridItem extraClasses="gridItemFullMobileOnly">
+          <div className="inputGroup">
+            <label for="sendingTo" className="labelText">
+              You are sending to: (optional)
+            </label>
+            <div>
+              <input
+                type="text"
+                name="sendingTo"
+                placeholder="Click to Select"
+                value={sendingTo}
+                readOnly
+                onFocus={(e) => handlePlatformChoice(e, "to")}
+                className={`inputFieldText`}
+                id="sendingTo"
+              />
+            </div>
+          </div>
+        </GridItem>
+        <GridItem extraClasses="noMargin">
+          <div className="inputGroup divider">
             <span className="labelText alignRight">E-Levy Charge:</span>
-            <span
-              className="displayText alignRight"
-              tabIndex={2}
-              ref={elevyChargeRef}
-            >
-              {`${elevyAmount.toLocaleString("en-US", {
+            <span className="displayText alignRight" ref={elevyChargeRef}>
+              {`+ ${elevyAmount.toLocaleString("en-US", {
                 maximumFractionDigits: 2,
                 minimumFractionDigits: 2,
               })} GHS`}
             </span>
           </div>
-        </div>
-        <div className="gridItem">
+        </GridItem>
+        <GridItem extraClasses="noMargin">
           <div className="inputGroup">
             <span className="labelText">Platform Charge:</span>
-            <span className="displayText" tabIndex={2} ref={elevyChargeRef}>
-              {`${platformCharge.toLocaleString("en-US", {
+            <span className="displayText" ref={elevyChargeRef}>
+              {`+ ${platformCharge.toLocaleString("en-US", {
                 maximumFractionDigits: 2,
                 minimumFractionDigits: 2,
               })} GHS`}
             </span>
           </div>
-        </div>
-        <div className="gridItem">
+        </GridItem>
+        <GridItem extraClasses="centerFlex gridItemFull">
           <div className="inputGroup">
-            <span className="labelText">Total Charges:</span>
+            <span className="labelText alignCenter">You will pay:</span>
             <span
-              className="displayText charge"
-              tabIndex={2}
+              className="displayText payment charge alignCenter"
               ref={elevyChargeRef}
             >
-              + GHS{" "}
-              {`${(elevyAmount + platformCharge).toLocaleString("en-US", {
-                maximumFractionDigits: 2,
-                minimumFractionDigits: 2,
-              })}`}
-            </span>
-          </div>
-        </div>
-        <div className="gridItem">
-          <div className="inputGroup">
-            <span className="labelText">You will pay:</span>
-            <span
-              className="displayText charge"
-              tabIndex={2}
-              ref={elevyChargeRef}
-            >
-              + GHS{" "}
+              GHS{" "}
               {`${(elevyAmount + platformCharge + amount).toLocaleString(
                 "en-US",
                 {
@@ -260,6 +227,21 @@ const Advanced = () => {
                 }
               )}`}
             </span>
+          </div>
+        </GridItem>
+        <div className="gridItem gridItemFull">
+          <div className="inputGroup centerFlex">
+            <button
+              className="labelText button"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                showSimple();
+                return false;
+              }}
+            >
+              Show Simple
+            </button>
           </div>
         </div>
         {showPicker && pickerType === "from" && (
@@ -280,18 +262,16 @@ const Advanced = () => {
             updateChoice={setSendingToKey}
           />
         )}
-        <div className="gridItem gridItemFull">
+        <GridItem extraClasses="gridItemFull">
           <div className="inputGroup centerFlex">
             <span className="disclaimer">
-              Disclaimer: While we did our best to provide accurate results, we
-              cannot be held responsible for differences in your real-world
-              experience.
+              Disclaimer: We did our best to provide accurate results, however
+              you may experience differences in real-world usage.
             </span>
           </div>
-        </div>
+        </GridItem>
       </form>
-      {/* <span className="footer">Made with love</span> */}
-    </main>
+    </MainContainer>
   );
 };
 
