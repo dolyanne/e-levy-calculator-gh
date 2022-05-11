@@ -28,6 +28,12 @@ describe("Testing platform tariffs", () => {
       correctCharge: 0,
     },
     {
+      source: "mtn",
+      amount: 1000,
+      destination: "mtn",
+      correctCharge: 7.5,
+    },
+    {
       source: "voda",
       amount: 500,
       destination: "",
