@@ -9,6 +9,7 @@ const Picker = ({ title, data, close, updateChoice, updateChoiceForView }) => {
         <div className="pickerItemContainer">
           {data.map((item) => (
             <PickerItem
+              key={item.key}
               title={item.name}
               customTheme={item.customTheme}
               handleSelect={() => {
