@@ -29,7 +29,7 @@ describe("Testing platform tariffs", () => {
     },
     {
       source: "mtn",
-      amount: 1000,
+      amount: 2000,
       destination: "mtn",
       correctCharge: 7.5,
     },
@@ -39,6 +39,8 @@ describe("Testing platform tariffs", () => {
       destination: "",
       correctCharge: 0,
     },
+   
+    
   ].forEach(({ source, destination, amount, correctCharge }) => {
     test(`Testing sending GHS ${amount} from ${source} to ${destination}`, () => {
       // get platform charge for momo

@@ -7,7 +7,7 @@ import {
 
 export const platformsMap = {
   mtn: mtnMomoTariffs,
-  airtel: airtelTigoCashTariffs,
+  airtelTigo: airtelTigoCashTariffs,
   voda: vodafoneCashTariffs,
   bank: bankTariffs,
 };
