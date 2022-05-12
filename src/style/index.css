@@ -11,10 +11,6 @@ body {
 /* containers */
 .mainContainer {
   background: rgb(21, 27, 106);
-  background: linear-gradient(0deg,
-      rgba(21, 27, 106, 1) 0%,
-      rgba(20, 27, 104, 1) 33%,
-      rgba(13, 18, 76, 1) 67%);
   color: white;
   width: 100%;
   min-height: 100vh;
@@ -104,6 +100,48 @@ body {
   letter-spacing: normal;
 }
 
+.inlinePickerItem {
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectedVisual {
+  display: flex;
+  margin-right: 10px;
+  background-color: #0b0f46;
+  align-items: center;
+  height: 100%;
+  width: 60px;
+  background-color: #ffcc00;
+  border-radius: 10px;
+}
+
+.selectedText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.selectedPlatform {
+  margin-bottom: 5px;
+}
+
+.togglePicker {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+
+
+
+
+
+
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -118,6 +156,12 @@ body {
 
 .divider {
   border-right: 1px solid rgb(127, 123, 123);
+}
+
+.arrow {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 /* Text Elements */
@@ -136,6 +180,13 @@ body {
   font-size: 14px;
 }
 
+.alternateText {
+  color: rgb(201, 201, 201);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
 .displayText {
   max-width: 100%;
   font-size: 35px;
@@ -152,11 +203,17 @@ body {
 .charge {
   background-color: #e84a46;
   border-radius: 5px;
-  padding: 5 10px;
+  padding: 5px 10px;
+}
+
+.chargeAlt {
+  background-color: #030733;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
 .button {
-  background-color: #01c4ff;
+  background-color: #0492bd;
   border: 0px;
   border-radius: 5px;
   padding: 7px;
@@ -166,7 +223,7 @@ body {
 }
 
 .button:hover {
-  background-color: #0492bd;
+  background-color: #03617d;
 }
 
 .disclaimer {

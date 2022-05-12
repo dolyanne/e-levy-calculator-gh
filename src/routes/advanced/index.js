@@ -104,10 +104,10 @@ const Advanced = ({ showSimple }) => {
   //   }
   // };
 
-  const handlePlatformChoice = (event, type) => {
-    setShowPicker(true);
-    setPickerType(type);
-  };
+  // const handlePlatformChoice = (event, type) => {
+  //   setShowPicker(true);
+  //   setPickerType(type);
+  // };
 
   return (
     <MainContainer>
@@ -173,28 +173,26 @@ const Advanced = ({ showSimple }) => {
         <GridItem extraClasses="noMargin">
           <div className="inputGroup divider">
             <span className="labelText alignRight">E-Levy Charge:</span>
-            <span className="displayText alignRight" ref={elevyChargeRef}>
-              {`+ ${elevyAmount.toLocaleString("en-US", {
-                maximumFractionDigits: 2,
-                minimumFractionDigits: 2,
-              })} GHS`}
-            </span>
-            <span className="labelText small alignRight">
-              1.5%, {exempt}GHS exempt
+            <span className="displayText alignRight">
+              <span className="charge">
+                {`+ ${elevyAmount.toLocaleString("en-US", {
+                  maximumFractionDigits: 2,
+                  minimumFractionDigits: 2,
+                })} GHS`}
+              </span>
             </span>
           </div>
         </GridItem>
         <GridItem extraClasses="noMargin">
           <div className="inputGroup">
-            <span className="labelText">Platform Charge:</span>
-            <span className="displayText" ref={elevyChargeRef}>
-              {`+ ${platformCharge.toLocaleString("en-US", {
-                maximumFractionDigits: 2,
-                minimumFractionDigits: 2,
-              })} GHS`}
-            </span>
-            <span className="labelText small">
-              {`${platformRate}%, <${platformExempt}GHS exempt`}
+            <span className="labelText">MTN MoMo Charge:</span>
+            <span className="displayText">
+              <span className="chargeAlt">
+                {`+ ${platformCharge.toLocaleString("en-US", {
+                  maximumFractionDigits: 2,
+                  minimumFractionDigits: 2,
+                })} GHS`}
+              </span>
             </span>
           </div>
         </GridItem>
@@ -202,7 +200,7 @@ const Advanced = ({ showSimple }) => {
           <div className="inputGroup">
             <span className="labelText alignCenter">You will pay:</span>
             <span
-              className="displayText payment charge alignCenter"
+              className="displayText chargeAlt alignCenter"
               ref={elevyChargeRef}
             >
               GHS{" "}
