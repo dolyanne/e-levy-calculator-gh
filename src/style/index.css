@@ -11,12 +11,10 @@ body {
 /* containers */
 .mainContainer {
   background: rgb(21, 27, 106);
-  background: linear-gradient(
-    0deg,
-    rgba(21, 27, 106, 1) 0%,
-    rgba(20, 27, 104, 1) 33%,
-    rgba(13, 18, 76, 1) 67%
-  );
+  background: linear-gradient(0deg,
+      rgba(21, 27, 106, 1) 0%,
+      rgba(20, 27, 104, 1) 33%,
+      rgba(13, 18, 76, 1) 67%);
   color: white;
   width: 100%;
   min-height: 100vh;
@@ -93,7 +91,7 @@ body {
 
 .pickerItem {
   background-color: #0b0f46;
-  height: 100px;
+  height: 60px;
   width: 45%;
   display: flex;
   flex-direction: column;
@@ -203,6 +201,17 @@ body {
   display: flex;
   flex-direction: column;
   max-width: 100%;
+}
+
+.pickerRow {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  max-width: 100%;
+  align-items: center;
+  font-size: 16px;
+
 }
 
 .centerFlex .inputGroup {

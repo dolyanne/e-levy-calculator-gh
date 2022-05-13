@@ -2,6 +2,8 @@ import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
 import GridItem from "../../components/containers/grid-item";
 import MainContainer from "../../components/containers/main-container";
+import Arrow from "../../components/form/arrow";
+import InlinePicker from "../../components/form/inline-picker";
 import Picker from "../../components/form/picker";
 import { to, from } from "../../data/platforms";
 import {
@@ -92,15 +94,15 @@ const Advanced = ({ showSimple }) => {
     }
   };
 
-  const handleTextChange = (event, callback) => {
-    callback(event.target.value);
-  };
+  // const handleTextChange = (event, callback) => {
+  //   callback(event.target.value);
+  // };
 
-  const handleTab = (event) => {
-    if (event.keyCode == 13) {
-      elevyChargeRef.current.focus();
-    }
-  };
+  // const handleTab = (event) => {
+  //   if (event.keyCode == 13) {
+  //     elevyChargeRef.current.focus();
+  //   }
+  // };
 
   const handlePlatformChoice = (event, type) => {
     setShowPicker(true);
@@ -159,42 +161,13 @@ const Advanced = ({ showSimple }) => {
             </div>
           </div>
         </GridItem>
-        <GridItem extraClasses="gridItemFullMobileOnly">
-          <div className="inputGroup">
-            <label for="sendingFrom" className="labelText">
-              You are sending from: (optional)
-            </label>
+        <GridItem extraClasses="gridItemFull">
+          <div className="inputGroup pickerRow">
+            <InlinePicker title={"From"} />
             <div>
-              <input
-                type="text"
-                name="sendingFrom"
-                placeholder="Click to Select"
-                onFocus={(e) => handlePlatformChoice(e, "from")}
-                readOnly
-                value={sendingFrom}
-                className={`inputFieldText`}
-                id="sendingFrom"
-              />
+              <Arrow />
             </div>
-          </div>
-        </GridItem>
-        <GridItem extraClasses="gridItemFullMobileOnly">
-          <div className="inputGroup">
-            <label for="sendingTo" className="labelText">
-              You are sending to: (optional)
-            </label>
-            <div>
-              <input
-                type="text"
-                name="sendingTo"
-                placeholder="Click to Select"
-                value={sendingTo}
-                readOnly
-                onFocus={(e) => handlePlatformChoice(e, "to")}
-                className={`inputFieldText`}
-                id="sendingTo"
-              />
-            </div>
+            <InlinePicker title={"To"} />
           </div>
         </GridItem>
         <GridItem extraClasses="noMargin">

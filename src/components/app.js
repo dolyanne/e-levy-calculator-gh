@@ -8,7 +8,7 @@ import baseroute from "../baseroute";
 import Advanced from "../routes/advanced";
 
 const App = () => {
-  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(true);
   return (
     <div id="app">
       <Router>
