@@ -1,49 +1,41 @@
-export const to = [
-  {
-    name: "MTN MoMo",
-    img: "./assets/white-waves.png",
-    key: "mtn",
-    customTheme: "mtn",
-  },
-  {
-    name: "Vodafone Cash",
-    img: "./assets/white-waves.png",
-    key: "voda",
-    customTheme: "vodafone",
-  },
-  // {
-  //   name: "AirtelTigo Cash",
-  //   img: "./assets/white-waves.png",
-  //   key: "airtel",
-  // },
-  // {
-  //   name: "Banks",
-  //   img: "./assets/white-waves.png",
-  //   key: "bank",
-  // },
-];
+import {
+  airtelTigoMoneyTariffs,
+  mtnMomoTariffs,
+  vodafoneCashTariffs,
+} from "../utils/platformCharges";
 
-export const from = [
-  {
-    name: "MTN MoMo",
-    img: "./assets/white-waves.png",
-    key: "mtn",
-    customTheme: "mtn",
-  },
-  {
-    name: "Vodafone Cash",
-    img: "./assets/white-waves.png",
-    key: "voda",
-    customTheme: "vodafone",
-  },
-  // {
-  //   name: "AirtelTigo Cash",
-  //   img: "./assets/white-waves.png",
-  //   key: "airtel",
-  // },
-  // {
-  //   name: "Banks",
-  //   img: "./assets/white-waves.png",
-  //   key: "bank",
-  // },
-];
+export const platforms = new Map([
+  [
+    "mtn",
+    {
+      name: "MTN MoMo",
+      company: "MTN",
+      img: "./assets/white-waves.png",
+      key: "mtn",
+      theme: "mtn",
+      getCharge: mtnMomoTariffs,
+    },
+  ],
+  [
+    "vodafone",
+    {
+      name: "Vodafone Cash",
+      company: "Vodafone",
+      img: "./assets/white-waves.png",
+      key: "vodafone",
+      theme: "vodafone",
+      getCharge: vodafoneCashTariffs,
+    },
+  ],
+  [
+    "airtel",
+    {
+      name: "AirtelTigo Money",
+      company: "AirtelTigo",
+      img: "./assets/white-waves.png",
+      key: "airtel",
+      theme: "airtel",
+      getCharge: airtelTigoMoneyTariffs,
+    },
+  ],
+]);

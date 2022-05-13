@@ -8,35 +8,37 @@ const ATMONEY_ABOVE_1000_CAP = 1000; // above 1000 has a flat fee of 10gh
 
 export function mtnMomoTariffs({ source, destination, amount }) {
   let charge = 0;
+  let exempt = MTN_TO_OTHERS_EXEMPT;
+  let rate = MTN_TO_MTN_CHARGE;
+
   if (destination === source) {
+    // mtn to mtn
     if (amount > MTN_TO_MTN_EXEMPT) {
       charge = (amount * MTN_TO_MTN_CHARGE) / 100;
-    }
-    if (amount >= MTN_ABOVE_1000_CAP) {
+    } else if (amount >= MTN_ABOVE_1000_CAP) {
       charge = 7.5;
     }
+    exempt = MTN_TO_OTHERS_EXEMPT;
+    rate = MTN_TO_MTN_CHARGE;
   } else {
+    //mtn to others
     if (amount > MTN_TO_OTHERS_EXEMPT) {
       charge = (amount * MTN_TO_OTHERS_CHARGE) / 100;
-    }
-    if (amount >= MTN_ABOVE_1000_CAP) {
+    } else if (amount >= MTN_ABOVE_1000_CAP) {
       charge = 7.5;
     }
-    return {
-      charge,
-      exempt: MTN_TO_OTHERS_EXEMPT,
-      rate: MTN_TO_OTHERS_CHARGE,
-    };
+    exempt = MTN_TO_OTHERS_EXEMPT;
+    rate = MTN_TO_OTHERS_CHARGE;
   }
 
   return {
     charge,
-    exempt: MTN_TO_MTN_EXEMPT,
-    rate: MTN_TO_MTN_CHARGE,
+    exempt,
+    rate,
   };
 }
 
-export function vodafoneCashTariffs(source, destination, amount) {
+export function vodafoneCashTariffs({}) {
   return {
     charge: 0,
     exempt: 0,
@@ -44,10 +46,9 @@ export function vodafoneCashTariffs(source, destination, amount) {
   }; // Haha transfer charge de3 entua bi da! lol
 }
 
-export function airtelTigoCashTariffs(source, destination, amount) {
+export function airtelTigoMoneyTariffs({ amount }) {
   let charge = 0;
   charge = (amount * ATMONEY_CHARGE) / 100;
-
   if (amount >= ATMONEY_ABOVE_1000_CAP) {
     charge = 10;
   }
@@ -57,8 +58,4 @@ export function airtelTigoCashTariffs(source, destination, amount) {
     exempt: 0,
     rate: ATMONEY_CHARGE,
   };
-}
-
-export function bankTariffs(source, destination, amount) {
-  return 0;
 }

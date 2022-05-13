@@ -1,37 +1,24 @@
 import { h } from "preact";
-import PickerItem from "./picker-item";
+import PickerItem from "./PickerItem";
 
-const Picker = ({ title, data, close, updateChoice, updateChoiceForView }) => {
+const Picker = ({ data, title, updateChoice, close }) => {
   return (
     <div className="overlayContainer" onClick={() => close()}>
       <div className="pickerContainer">
         <span className="labelText">{title}</span>
         <div className="pickerItemContainer">
-          {data.map((item) => (
+          {[...data.values()].map((item) => (
             <PickerItem
               key={item.key}
               title={item.name}
-              customTheme={item.customTheme}
+              theme={item.theme}
               handleSelect={() => {
                 updateChoice(item.key);
-                updateChoiceForView(item.name);
                 close();
                 return false;
               }}
             />
           ))}
-          <span
-            role="button"
-            onClick={() => {
-              updateChoice("");
-              updateChoiceForView("");
-              close();
-              return false;
-            }}
-            className="labelText pointer"
-          >
-            Clear
-          </span>
         </div>
       </div>
     </div>

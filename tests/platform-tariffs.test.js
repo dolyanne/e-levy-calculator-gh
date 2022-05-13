@@ -1,5 +1,4 @@
-import { platformsMap } from "../src/data/platform-map";
-import { mtnMomoTariffs } from "../src/utils/platform-charges";
+import { platforms } from "../src/data/platforms";
 
 describe("Testing platform tariffs", () => {
   [
@@ -42,7 +41,7 @@ describe("Testing platform tariffs", () => {
   ].forEach(({ source, destination, amount, correctCharge }) => {
     test(`Testing sending GHS ${amount} from ${source} to ${destination}`, () => {
       // get platform charge for momo
-      const platformFunction = platformsMap[source];
+      const platformFunction = platforms.get(source).getCharge;
       const { charge } = platformFunction({
         source,
         destination,
