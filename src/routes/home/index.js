@@ -56,7 +56,7 @@ const Home = ({ showAdvanced }) => {
             </label>
             <div>
               <input
-                // tabIndex={1}
+                tabIndex={1}
                 type="text"
                 name="amount"
                 placeholder="0"
@@ -99,7 +99,7 @@ const Home = ({ showAdvanced }) => {
             <span className="labelText">E-Levy Charge:</span>
             <span
               className="displayText charge"
-              // tabIndex={2}
+              tabIndex={2}
               ref={elevyChargeRef}
             >
               + GHS{" "}

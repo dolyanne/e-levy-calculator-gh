@@ -1,10 +1,9 @@
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import GridItem from "../../components/containers/GridItem";
 import ItemGroup from "../../components/containers/ItemGroup";
 import MainContainer from "../../components/containers/MainContainer";
 import PickerArrow from "../../components/form/PickerArrow";
-import InlinePicker from "../../components/form/InlinePicker";
 import Picker from "../../components/form/Picker";
 import TextField from "../../components/form/TextField";
 import { platforms } from "../../data/platforms";
@@ -33,6 +32,9 @@ const Advanced = ({ showSimple }) => {
   const [sendingFrom, setSendingFrom] = useState("mtn");
   const [sendingTo, setSendingTo] = useState("mtn");
   const [platformCharge, setPlatformCharge] = useState(0);
+
+  //refs
+  let elevyChargeRef = useRef(null);
 
   const pickerData = {
     from: {
@@ -100,6 +102,12 @@ const Advanced = ({ showSimple }) => {
     setShowPicker(true);
   };
 
+  const handleTab = (event) => {
+    if (event.keyCode == 13) {
+      elevyChargeRef.current.focus();
+    }
+  };
+
   return (
     <MainContainer>
       <form className="gridContainer" method="POST">
@@ -121,6 +129,7 @@ const Advanced = ({ showSimple }) => {
                 required: true,
                 value: amount.toLocaleString("en-US"),
                 onInput: (e) => handleChange(e, setAmount),
+                tabIndex: 1,
               }}
             />
           </ItemGroup>
@@ -137,7 +146,9 @@ const Advanced = ({ showSimple }) => {
                 inputMode: "numeric",
                 value: previousAmount.toLocaleString("en-US"),
                 onInput: (e) => handleChange(e, setPreviousAmount),
+                tabIndex: 2,
               }}
+              onKeyUp={handleTab}
             />
           </ItemGroup>
         </GridItem>
@@ -178,7 +189,10 @@ const Advanced = ({ showSimple }) => {
               label={`${platforms.get(sendingFrom).company} Charge`}
             />
             <TextDisplay>
-              <Charge value={platformCharge} />
+              <Charge
+                chargeProps={{ ref: elevyChargeRef, tabIndex: 5 }}
+                value={platformCharge}
+              />
             </TextDisplay>
           </ItemGroup>
         </GridItem>

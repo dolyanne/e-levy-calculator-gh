@@ -2,8 +2,12 @@ import { h } from "preact";
 
 const FromPicker = ({ id, handleChange, title, theme }) => {
   return (
-    <div className="fromGrid">
-      <div className="selectedText alignRight">
+    <div className="fromGrid" tabIndex={3}>
+      <div
+        className="selectedText alignRight pointer"
+        role="button"
+        onClick={(event) => handleChange(event, id)}
+      >
         <span className="selectedPlatform">{title}</span>
         <span
           role="button"
