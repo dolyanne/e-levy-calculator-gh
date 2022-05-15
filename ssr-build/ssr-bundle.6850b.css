@@ -1,0 +1,531 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Gidole-Regular";
+  src: local("Gidole-Regular"), url(/e-levy-calculator-gh/d00584b3627c467d3b585f2d1c8d58fe.woff2) format("woff2");
+  font-display: swap;
+}
+
+/* containers */
+.mainContainer {
+  background: rgb(20,28,125);
+  background: linear-gradient(151deg, rgba(20,28,125,1) 0%, rgba(14,19,80,1) 67%); 
+  color: white;
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Gidole-Regular";
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  min-width: 320px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto;
+  padding: 10px;
+  grid-row-gap: 15px;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.gridItem {
+  max-width: 100%;
+  margin: 0 20px;
+}
+
+.noMargin {
+  margin: 0;
+}
+
+.gridItem.gridItemFull {
+  grid-row: span 1;
+  grid-column: span 2;
+}
+
+.centerFlex {
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.overlayContainer {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.pickerContainer {
+  border: 1px solid #00043c;
+  border-radius: 10px;
+  width: 80%;
+  padding: 20px;
+  max-width: 300px;
+  background-color: #0e1354;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+
+.pickerItemContainer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.pickerItem {
+  background-color: #0b0f46;
+  height: 100%;
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+  text-align: right;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  letter-spacing: normal;
+  margin: 10px;
+  height: 80px;
+  width: 80px;
+}
+
+.inlinePickerItem {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  height: 50px;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex: 5 1 0px;
+      flex: 5 1 0;
+  margin: 0 10px;
+}
+
+.arrowContainer {
+  -ms-flex-align: center;
+      align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex: 1 1 0px;
+      flex: 1 1 0;
+}
+
+.close {
+  display: block;
+  float: right;
+}
+
+.pickerTitle {
+  display: block;
+}
+
+.selectedPlatform {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.togglePicker {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pickerItem:hover {
+  background-color: #01086b;
+}
+
+.pickerContent {
+  padding: 10px;
+}
+
+.chargePadding {
+  padding-bottom: 10px;
+}
+
+.divider {
+  border-right: 1px solid rgb(127, 123, 123);
+}
+
+.arrow {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  text-align: center;
+}
+
+.platformPickerGrid {
+  height: 80px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 46% 8% 46%;
+}
+.platformPickerGrid .fromGrid {
+  display: grid;
+  grid-template-columns: minmax(80px, 1fr) 80px;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.platformPickerGrid .toGrid {
+  display: grid;
+  grid-template-columns: 80px minmax(80px, 1fr);
+  -ms-flex-align: center;
+      align-items: center;
+}
+.selectedText {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+}
+.selectedVisual {
+  margin: 0 10px;
+  background-color: #0b0f46;
+  height: 60px;
+  border-radius: 10px;
+}
+
+/* Text Elements */
+.labelText {
+  font-weight: 500;
+  font-size: 16px;
+  color: rgb(201, 201, 201);
+  margin: 15px;
+  letter-spacing: normal;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.small {
+  margin: 5px;
+  font-size: 14px;
+}
+
+.alternateText {
+  color: rgb(201, 201, 201);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.displayText {
+  max-width: 100%;
+  font-size: 35px;
+  color: white;
+  padding: 10px 20px;
+}
+
+.currency {
+  font-size: 35px;
+  color: white;
+  margin-left: -80px;
+}
+
+.chargeAlt {
+  background-color: #030733;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.charge {
+  background-color: #A4211E;
+  /* background-color: #e84a46; */
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.button {
+  background-color: #065974;
+  /* background-color: #01c4ff; */
+  border: 0px;
+  border-radius: 5px;
+  padding: 7px;
+  color: white;
+  font-family: "Gidole-Regular";
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #033a4c;
+}
+
+.disclaimer {
+  font-weight: 500;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.payment {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  font-size: 12px;
+  margin: 5px;
+}
+
+/* Inputs */
+.inputGroup {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  max-width: 100%;
+}
+
+.pickerRow {
+  margin-top: 10px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
+  max-width: 100%;
+  -ms-flex-align: center;
+      align-items: center;
+  font-size: 16px;
+}
+
+.centerFlex .inputGroup {
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.inputField {
+  border: 1px solid #00043c;
+  border-radius: 5px;
+  max-width: 100%;
+  font-size: 35px;
+  color: white;
+  padding: 10px 20px;
+  background-color: #00043c;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Gidole-Regular";
+}
+
+.inputFieldText {
+  border: 1px solid #00043c;
+  border-radius: 5px;
+  max-width: 100%;
+  font-size: 23px;
+  color: white;
+  padding: 17px 20px;
+  background-color: #00043c;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Gidole-Regular";
+}
+
+.inputField:focus {
+  outline: 4px solid #020315;
+}
+
+.inputFieldEmphasis {
+  outline: 1px solid #020315;
+}
+
+/* Mobile view */
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    padding-top: 10px;
+    -ms-flex-pack: start;
+        justify-content: flex-start;
+  }
+
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    grid-column-gap: 0px;
+    max-width: 100%;
+  }
+
+  .gridItem {
+    margin: 0;
+  }
+
+  .gridItem.gridItemFull {
+    grid-row: span 1;
+    grid-column: span 2;
+    max-width: 100%;
+  }
+
+  .gridItem.gridItemFullMobileOnly {
+    grid-row: span 1;
+    grid-column: span 2;
+    max-width: 100%;
+  }
+
+  .gridItem.gridItemHalf {
+    grid-row: span 1;
+    grid-column: span 1;
+    max-width: 100%;
+    margin: 0 20px;
+  }
+
+  .inputField {
+    font-size: 20px;
+    box-sizing: border-box;
+  }
+
+  .inputFieldText {
+    font-size: 18px;
+    padding: 10px 12px;
+  }
+
+  .inputFieldEmphasis {
+    outline: 1px solid #020315;
+  }
+
+  .currency {
+    font-size: 18px;
+    margin-left: -60px;
+  }
+
+  .displayText {
+    max-width: 100%;
+    font-size: 18px;
+    padding: 2px 5px;
+  }
+
+  .disclaimer {
+    font-size: 12px;
+  }
+
+  .resetFormattingMobile {
+    text-align: left;
+  }
+
+  .labelText {
+    font-size: 14px;
+  }
+
+  .selectedText {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+
+  .selectedVisual {
+    height: 40px;
+  }
+
+  .platformPickerGrid {
+    height: 60px;
+  }
+  .platformPickerGrid .fromGrid {
+    grid-template-columns: minmax(60px, 1fr) 60px;
+  }
+  .platformPickerGrid .toGrid {
+    grid-template-columns: 60px minmax(60px, 1fr);
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* themes */
+.vodafone {
+  background-color: #e60000;
+  background-image: url(/e-levy-calculator-gh/005ad5b4515beac96095c4207cb234a6.png);
+  background-size: cover;
+  color: white;
+}
+
+.vodafone:hover {
+  background-color: #e34b4b;
+}
+
+.mtn {
+  background-color: #ffcc00;
+  color: black;
+  background-image: url(/e-levy-calculator-gh/0d3c324c1e9b2785f8ae7cc6016ec48b.jpg);
+  background-size: cover;
+}
+
+.mtn:hover {
+  background-color: #ffdc4e;
+}
+
+.airtel {
+  background-color: #ea0c0f;
+  background-image: url(/e-levy-calculator-gh/3d30c932c9dc7a5275d8b0d1961bbffc.jpg);
+  background-size: cover;
+  color: white;
+}
+.airtel:hover {
+  background-color: #f73b3b;
+}
+
+
+/*# sourceMappingURL=ssr-bundle.6850b.css.map*/
