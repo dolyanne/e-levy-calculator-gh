@@ -5,7 +5,7 @@ body {
 
 @font-face {
   font-family: "Gidole-Regular";
-  src: local("Gidole-Regular"), url(/d00584b3627c467d3b585f2d1c8d58fe.woff2) format("woff2");
+  src: local("Gidole-Regular"), url(/e-levy-calculator-gh/d00584b3627c467d3b585f2d1c8d58fe.woff2) format("woff2");
   font-display: swap;
 }
 
@@ -508,7 +508,7 @@ input[type="number"] {
 /* themes */
 .vodafone {
   background-color: #e60000;
-  background-image: url(/005ad5b4515beac96095c4207cb234a6.png);
+  background-image: url(/e-levy-calculator-gh/005ad5b4515beac96095c4207cb234a6.png);
   background-size: cover;
   color: white;
 }
@@ -520,7 +520,7 @@ input[type="number"] {
 .mtn {
   background-color: #ffcc00;
   color: black;
-  background-image: url(/0d3c324c1e9b2785f8ae7cc6016ec48b.jpg);
+  background-image: url(/e-levy-calculator-gh/0d3c324c1e9b2785f8ae7cc6016ec48b.jpg);
   background-size: cover;
 }
 
@@ -530,7 +530,7 @@ input[type="number"] {
 
 .airtel {
   background-color: #ea0c0f;
-  background-image: url(/3d30c932c9dc7a5275d8b0d1961bbffc.jpg);
+  background-image: url(/e-levy-calculator-gh/3d30c932c9dc7a5275d8b0d1961bbffc.jpg);
   background-size: cover;
   color: white;
 }
@@ -539,4 +539,4 @@ input[type="number"] {
 }
 
 
-/*# sourceMappingURL=ssr-bundle.54b9e.css.map*/
+/*# sourceMappingURL=ssr-bundle.5b09f.css.map*/
