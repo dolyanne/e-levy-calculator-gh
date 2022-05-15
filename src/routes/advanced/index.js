@@ -19,6 +19,8 @@ import ChargeLabel from "../../components/form/ChargeLabel";
 import TextDisplay from "../../components/form/TextDisplay";
 import Charge from "../../components/form/Charge";
 import Disclaimer from "../../components/global/Disclaimer";
+import FromPicker from "../../components/form/FromPicker";
+import ToPicker from "../../components/form/ToPicker";
 
 const Advanced = ({ showSimple }) => {
   // state
@@ -143,19 +145,21 @@ const Advanced = ({ showSimple }) => {
         {/* Platform Picker */}
         <GridItem className="gridItemFull">
           <ItemGroup className="pickerRow">
-            <InlinePicker
-              title={platforms.get(sendingFrom).name}
-              theme={platforms.get(sendingFrom).theme}
-              id="from"
-              handleChange={handlePickerChange}
-            />
-            <PickerArrow />
-            <InlinePicker
-              title={platforms.get(sendingTo).name}
-              theme={platforms.get(sendingTo).theme}
-              id="to"
-              handleChange={handlePickerChange}
-            />
+            <div className="platformPickerGrid">
+              <FromPicker
+                title={platforms.get(sendingFrom).name}
+                theme={platforms.get(sendingFrom).theme}
+                id="from"
+                handleChange={handlePickerChange}
+              />
+              <PickerArrow />
+              <ToPicker
+                title={platforms.get(sendingTo).name}
+                theme={platforms.get(sendingTo).theme}
+                id="to"
+                handleChange={handlePickerChange}
+              />
+            </div>
           </ItemGroup>
         </GridItem>
 

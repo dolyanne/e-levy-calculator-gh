@@ -79,17 +79,17 @@ body {
 }
 
 .pickerItemContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding-top: 20px;
+  display: grid;
+  grid-template-columns: 90px 90px;
+  grid-template-rows: 90px 90px;
+  row-gap: 20px;
   justify-content: space-around;
 }
 
 .pickerItem {
   background-color: #0b0f46;
-  height: 100px;
-  width: 42%;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,19 +116,6 @@ body {
   align-items: center;
   display: flex;
   justify-content: center;
-  flex: 1 1 0;
-}
-
-.selectedVisual {
-  display: flex;
-  margin-right: 10px;
-  background-color: #0b0f46;
-  align-items: center;
-  min-height: 40px;
-  height: 100%;
-  max-width: 60px;
-  min-width: 40px;
-  border-radius: 10px;
   flex: 1 1 0;
 }
 
@@ -167,6 +154,33 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.platformPickerGrid {
+  height: 80px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 46% 8% 46%;
+}
+.platformPickerGrid .fromGrid {
+  display: grid;
+  grid-template-columns: minmax(80px, 1fr) 80px;
+  align-items: center;
+}
+.platformPickerGrid .toGrid {
+  display: grid;
+  grid-template-columns: 80px minmax(80px, 1fr);
+  align-items: center;
+}
+.selectedText {
+  display: flex;
+  flex-direction: column;
+}
+.selectedVisual {
+  margin: 0 10px;
+  background-color: #0b0f46;
+  height: 60px;
+  border-radius: 10px;
 }
 
 /* Text Elements */
@@ -210,7 +224,6 @@ body {
   border-radius: 5px;
   padding: 5px 10px;
 }
-
 
 .charge {
   background-color: #e84a46;
@@ -274,7 +287,6 @@ body {
   max-width: 100%;
   align-items: center;
   font-size: 16px;
-
 }
 
 .centerFlex .inputGroup {
@@ -392,8 +404,20 @@ body {
   .selectedText {
     display: flex;
     flex-direction: column;
-    flex: 1 1 0;
-    /* justify-content: flex-end; */
+  }
+
+  .selectedVisual {
+    height: 40px;
+  }
+
+  .platformPickerGrid {
+    height: 60px;
+  }
+  .platformPickerGrid .fromGrid {
+    grid-template-columns: minmax(60px, 1fr) 60px;
+  }
+  .platformPickerGrid .toGrid {
+    grid-template-columns: 60px minmax(60px, 1fr);
   }
 }
 
@@ -412,7 +436,8 @@ input[type="number"] {
 /* themes */
 .vodafone {
   background-color: #e60000;
-  opacity: 0.8;
+  background-image: url("./../assets/vodafone-cash.png");
+  background-size: cover;
   color: white;
 }
 
@@ -422,10 +447,22 @@ input[type="number"] {
 
 .mtn {
   background-color: #ffcc00;
-  opacity: 0.8;
   color: black;
+  background-image: url("./../assets/momo-picker.png");
+  background-size: cover;
 }
 
 .mtn:hover {
   background-color: #ffdc4e;
+}
+
+
+.airtel {
+  background-color: #ea0c0f;
+  background-image: url("./../assets/airteltigo-money-logo.png");
+  background-size: cover;
+  color: white;
+}
+.airtel:hover {
+  background-color: #f73b3b;
 }

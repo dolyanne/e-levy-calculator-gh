@@ -8,7 +8,7 @@ export const platforms = new Map([
   [
     "mtn",
     {
-      name: "MTN MoMo",
+      name: "MTN",
       company: "MTN",
       img: "./assets/white-waves.png",
       key: "mtn",
@@ -19,7 +19,7 @@ export const platforms = new Map([
   [
     "vodafone",
     {
-      name: "Vodafone Cash",
+      name: "Vodafone",
       company: "Vodafone",
       img: "./assets/white-waves.png",
       key: "vodafone",
@@ -30,7 +30,7 @@ export const platforms = new Map([
   [
     "airtel",
     {
-      name: "AirtelTigo Money",
+      name: "AirtelTigo",
       company: "AirtelTigo",
       img: "./assets/white-waves.png",
       key: "airtel",
