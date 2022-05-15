@@ -13,19 +13,19 @@ export function mtnMomoTariffs({ source, destination, amount }) {
 
   if (destination === source) {
     // mtn to mtn
-    if (amount > MTN_TO_MTN_EXEMPT) {
-      charge = (amount * MTN_TO_MTN_CHARGE) / 100;
-    } else if (amount >= MTN_ABOVE_1000_CAP) {
+    if (amount >= MTN_ABOVE_1000_CAP) {
       charge = 7.5;
+    } else if (amount > MTN_TO_MTN_EXEMPT) {
+      charge = (amount * MTN_TO_MTN_CHARGE) / 100;
     }
     exempt = MTN_TO_OTHERS_EXEMPT;
     rate = MTN_TO_MTN_CHARGE;
   } else {
     //mtn to others
-    if (amount > MTN_TO_OTHERS_EXEMPT) {
-      charge = (amount * MTN_TO_OTHERS_CHARGE) / 100;
-    } else if (amount >= MTN_ABOVE_1000_CAP) {
+    if (amount >= MTN_ABOVE_1000_CAP) {
       charge = 7.5;
+    } else if (amount > MTN_TO_OTHERS_EXEMPT) {
+      charge = (amount * MTN_TO_OTHERS_CHARGE) / 100;
     }
     exempt = MTN_TO_OTHERS_EXEMPT;
     rate = MTN_TO_OTHERS_CHARGE;

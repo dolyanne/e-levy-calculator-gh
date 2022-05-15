@@ -21,7 +21,7 @@ describe("Testing platform tariffs", () => {
       correctCharge: 0.9,
     },
     {
-      source: "voda",
+      source: "vodafone",
       amount: 500,
       destination: "mtn",
       correctCharge: 0,
@@ -33,7 +33,7 @@ describe("Testing platform tariffs", () => {
       correctCharge: 7.5,
     },
     {
-      source: "voda",
+      source: "vodafone",
       amount: 500,
       destination: "",
       correctCharge: 0,
