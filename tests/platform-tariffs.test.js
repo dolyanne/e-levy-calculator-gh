@@ -35,11 +35,33 @@ describe("Testing platform tariffs", () => {
     {
       source: "vodafone",
       amount: 500,
-      destination: "",
+      destination: "mtn",
       correctCharge: 0,
     },
-   
-    
+    {
+      source: "airtel",
+      amount: 2000,
+      destination: "mtn",
+      correctCharge: 7.5,
+    },
+    {
+      source: "airtel",
+      amount: 100,
+      destination: "mtn",
+      correctCharge: 0.75,
+    },
+    {
+      source: "airtel",
+      amount: 500,
+      destination: "airtel",
+      correctCharge: 3.75,
+    },
+    {
+      source: "airtel",
+      amount: 500,
+      destination: "mtn",
+      correctCharge: 3.75,
+    },
   ].forEach(({ source, destination, amount, correctCharge }) => {
     test(`Testing sending GHS ${amount} from ${source} to ${destination}`, () => {
       // get platform charge for momo

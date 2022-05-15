@@ -50,7 +50,7 @@ export function airtelTigoMoneyTariffs({ amount }) {
   let charge = 0;
   charge = (amount * ATMONEY_CHARGE) / 100;
   if (amount >= ATMONEY_ABOVE_1000_CAP) {
-    charge = 10;
+    charge = 7.5;
   }
 
   return {

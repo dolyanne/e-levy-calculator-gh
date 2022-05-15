@@ -79,11 +79,10 @@ body {
 }
 
 .pickerItemContainer {
-  display: grid;
-  grid-template-columns: 90px 90px;
-  grid-template-rows: 90px 90px;
-  row-gap: 20px;
-  justify-content: space-around;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .pickerItem {
@@ -95,11 +94,13 @@ body {
   align-items: center;
   justify-content: flex-end;
   text-align: right;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 18px;
   letter-spacing: normal;
   margin: 10px;
+  height: 80px;
+  width: 80px;
 }
 
 .inlinePickerItem {
@@ -117,6 +118,15 @@ body {
   display: flex;
   justify-content: center;
   flex: 1 1 0;
+}
+
+.close {
+  display: block;
+  float: right;
+}
+
+.pickerTitle {
+  display: block;
 }
 
 .selectedPlatform {
@@ -330,7 +340,8 @@ body {
 /* Mobile view */
 @media only screen and (max-width: 600px) {
   .mainContainer {
-    justify-content: center;
+    padding-top: 10px;
+    justify-content: flex-start;
   }
 
   .gridContainer {
@@ -436,7 +447,7 @@ input[type="number"] {
 /* themes */
 .vodafone {
   background-color: #e60000;
-  background-image: url("./../assets/vodafone-cash.png");
+  background-image: url("./../assets/vf-cash.png");
   background-size: cover;
   color: white;
 }
@@ -448,7 +459,7 @@ input[type="number"] {
 .mtn {
   background-color: #ffcc00;
   color: black;
-  background-image: url("./../assets/momo-picker.png");
+  background-image: url("./../assets/mtn-momo.jpg");
   background-size: cover;
 }
 
@@ -456,10 +467,9 @@ input[type="number"] {
   background-color: #ffdc4e;
 }
 
-
 .airtel {
   background-color: #ea0c0f;
-  background-image: url("./../assets/airteltigo-money-logo.png");
+  background-image: url("./../assets/atmoney.jpg");
   background-size: cover;
   color: white;
 }

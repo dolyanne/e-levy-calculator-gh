@@ -203,7 +203,7 @@ const Advanced = ({ showSimple }) => {
                 return false;
               }}
             >
-              Calculate E-levy Only!
+              Show Simplified
             </button>
           </ItemGroup>
         </GridItem>
