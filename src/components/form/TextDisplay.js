@@ -4,7 +4,7 @@ const TextDisplay = ({ className, children }) => {
   return <span className={`displayText ${className}`}>{children}</span>;
 };
 
-Text.defaultProps = {
+TextDisplay.defaultProps = {
   className: "",
 };
 

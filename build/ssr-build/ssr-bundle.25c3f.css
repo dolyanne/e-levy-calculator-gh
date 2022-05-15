@@ -5,7 +5,7 @@ body {
 
 @font-face {
   font-family: "Gidole-Regular";
-  src: local("Gidole-Regular"), url(./../assets/gidole.woff2) format("woff2");
+  src: local("Gidole-Regular"), url(/d00584b3627c467d3b585f2d1c8d58fe.woff2) format("woff2");
   font-display: swap;
 }
 
@@ -22,10 +22,14 @@ body {
   font-size: 20px;
   margin: 0;
   padding: 0;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
   min-width: 320px;
 }
 
@@ -35,7 +39,8 @@ body {
   grid-template-rows: auto;
   padding: 10px;
   grid-row-gap: 15px;
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .gridItem {
@@ -53,7 +58,8 @@ body {
 }
 
 .centerFlex {
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .overlayContainer {
@@ -64,9 +70,12 @@ body {
   z-index: 1;
   left: 0;
   top: 0;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .pickerContainer {
@@ -76,25 +85,35 @@ body {
   padding: 20px;
   max-width: 300px;
   background-color: #0e1354;
-  align-items: center;
-  justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
 }
 
 .pickerItemContainer {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .pickerItem {
   background-color: #0b0f46;
   height: 100%;
   width: 100%;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
   text-align: right;
   border-radius: 10px;
   cursor: pointer;
@@ -106,20 +125,29 @@ body {
 }
 
 .inlinePickerItem {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -ms-flex-direction: row;
+      flex-direction: row;
   height: 50px;
-  align-items: center;
-  justify-content: center;
-  flex: 5 1 0;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex: 5 1 0px;
+      flex: 5 1 0;
   margin: 0 10px;
 }
 
 .arrowContainer {
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  flex: 1 1 0;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex: 1 1 0px;
+      flex: 1 1 0;
 }
 
 .close {
@@ -163,8 +191,10 @@ body {
 }
 
 .arrow {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   text-align: center;
 }
 
@@ -177,16 +207,20 @@ body {
 .platformPickerGrid .fromGrid {
   display: grid;
   grid-template-columns: minmax(80px, 1fr) 80px;
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 .platformPickerGrid .toGrid {
   display: grid;
   grid-template-columns: 80px minmax(80px, 1fr);
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 .selectedText {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
 }
 .selectedVisual {
   margin: 0 10px;
@@ -275,6 +309,8 @@ body {
 }
 
 .payment {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -288,23 +324,30 @@ body {
 
 /* Inputs */
 .inputGroup {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   max-width: 100%;
 }
 
 .pickerRow {
   margin-top: 10px;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-pack: space-evenly;
+      justify-content: space-evenly;
   max-width: 100%;
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
   font-size: 16px;
 }
 
 .centerFlex .inputGroup {
-  align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .inputField {
@@ -345,7 +388,8 @@ body {
 @media only screen and (max-width: 600px) {
   .mainContainer {
     padding-top: 10px;
-    justify-content: flex-start;
+    -ms-flex-pack: start;
+        justify-content: flex-start;
   }
 
   .gridContainer {
@@ -417,8 +461,10 @@ body {
   }
 
   .selectedText {
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -ms-flex-direction: column;
+        flex-direction: column;
   }
 
   .selectedVisual {
@@ -451,7 +497,7 @@ input[type="number"] {
 /* themes */
 .vodafone {
   background-color: #e60000;
-  background-image: url("./../assets/vf-cash.png");
+  background-image: url(/005ad5b4515beac96095c4207cb234a6.png);
   background-size: cover;
   color: white;
 }
@@ -463,7 +509,7 @@ input[type="number"] {
 .mtn {
   background-color: #ffcc00;
   color: black;
-  background-image: url("./../assets/mtn-momo.jpg");
+  background-image: url(/0d3c324c1e9b2785f8ae7cc6016ec48b.jpg);
   background-size: cover;
 }
 
@@ -473,10 +519,13 @@ input[type="number"] {
 
 .airtel {
   background-color: #ea0c0f;
-  background-image: url("./../assets/atmoney.jpg");
+  background-image: url(/3d30c932c9dc7a5275d8b0d1961bbffc.jpg);
   background-size: cover;
   color: white;
 }
 .airtel:hover {
   background-color: #f73b3b;
 }
+
+
+/*# sourceMappingURL=ssr-bundle.25c3f.css.map*/
