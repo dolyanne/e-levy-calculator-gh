@@ -221,7 +221,7 @@ const Advanced = ({ showSimple }) => {
                 return false;
               }}
             >
-              Calculate E-Levy Only
+              Simple View
             </button>
           </ItemGroup>
         </GridItem>
