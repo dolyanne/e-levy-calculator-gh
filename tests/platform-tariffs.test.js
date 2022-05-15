@@ -17,8 +17,14 @@ describe("Testing platform tariffs", () => {
     {
       source: "mtn",
       amount: 120,
-      destination: "others",
+      destination: "voda",
       correctCharge: 0.9,
+    },
+    {
+      source: "mtn",
+      amount: 75,
+      destination: "voda",
+      correctCharge: 0,
     },
     {
       source: "vodafone",
@@ -48,7 +54,13 @@ describe("Testing platform tariffs", () => {
       source: "airtel",
       amount: 100,
       destination: "mtn",
-      correctCharge: 0.75,
+      correctCharge: 0,
+    },
+    {
+      source: "airtel",
+      amount: 40,
+      destination: "mtn",
+      correctCharge: 0,
     },
     {
       source: "airtel",
