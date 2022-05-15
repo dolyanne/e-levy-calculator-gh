@@ -147,8 +147,8 @@ const Advanced = ({ showSimple }) => {
                 value: previousAmount.toLocaleString("en-US"),
                 onInput: (e) => handleChange(e, setPreviousAmount),
                 tabIndex: 2,
+                onKeyUp: handleTab,
               }}
-              onKeyUp={handleTab}
             />
           </ItemGroup>
         </GridItem>
