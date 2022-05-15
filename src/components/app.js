@@ -6,9 +6,10 @@ import { useState, useEffect, useRef } from "preact/hooks";
 import Home from "../routes/home";
 import baseroute from "../baseroute";
 import Advanced from "../routes/advanced";
+import { getPreservedChoice } from "../utils/ux-enhancements";
 
 const App = () => {
-  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(getPreservedChoice());
   return (
     <div id="app">
       <Router>

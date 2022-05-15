@@ -20,6 +20,7 @@ import Charge from "../../components/form/Charge";
 import Disclaimer from "../../components/global/Disclaimer";
 import FromPicker from "../../components/form/FromPicker";
 import ToPicker from "../../components/form/ToPicker";
+import { preserveChoice } from "../../utils/ux-enhancements";
 
 const Advanced = ({ showSimple }) => {
   // state
@@ -213,6 +214,9 @@ const Advanced = ({ showSimple }) => {
               type="button"
               onClick={(e) => {
                 e.preventDefault();
+                preserveChoice({
+                  advanced: false,
+                });
                 showSimple();
                 return false;
               }}

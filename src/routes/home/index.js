@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
+import { preserveChoice } from "../../utils/ux-enhancements";
 
 const Home = ({ showAdvanced }) => {
   const elevyTax = 0.015; //1.5/100
@@ -118,6 +119,9 @@ const Home = ({ showAdvanced }) => {
               type="button"
               onClick={(e) => {
                 e.preventDefault();
+                preserveChoice({
+                  advanced: true,
+                });
                 showAdvanced();
                 return false;
               }}
