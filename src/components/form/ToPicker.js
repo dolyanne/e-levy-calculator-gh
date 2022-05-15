@@ -8,12 +8,14 @@ const ToPicker = ({ id, handleChange, title, theme }) => {
         role="button"
         onClick={(event) => handleChange(event, id)}
       />
-      <div
-        className="selectedText pointer"
-        role="button"
-        onClick={(event) => handleChange(event, id)}
-      >
-        <span className="selectedPlatform">{title}</span>
+      <div className="selectedText">
+        <span
+          className="selectedPlatform pointer"
+          role="button"
+          onClick={(event) => handleChange(event, id)}
+        >
+          {title}
+        </span>
         <span
           role="button"
           className="togglePicker pointer"

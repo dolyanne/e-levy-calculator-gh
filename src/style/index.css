@@ -11,8 +11,12 @@ body {
 
 /* containers */
 .mainContainer {
-  background: rgb(20,28,125);
-  background: linear-gradient(151deg, rgba(20,28,125,1) 0%, rgba(14,19,80,1) 67%); 
+  background: rgb(20, 28, 125);
+  background: linear-gradient(
+    151deg,
+    rgba(20, 28, 125, 1) 0%,
+    rgba(14, 19, 80, 1) 67%
+  );
   color: white;
   width: 100%;
   min-height: 100vh;
@@ -134,12 +138,14 @@ body {
 .selectedPlatform {
   font-size: 15px;
   margin-bottom: 5px;
+  width: fit-content;
 }
 
 .togglePicker {
   font-size: 13px;
   font-weight: 400;
   letter-spacing: normal;
+  width: fit-content;
 }
 
 .pointer {
@@ -238,7 +244,7 @@ body {
 }
 
 .charge {
-  background-color: #A4211E;
+  background-color: #a4211e;
   /* background-color: #e84a46; */
   border-radius: 5px;
   padding: 5px 10px;
@@ -268,6 +274,7 @@ body {
 
 .alignRight {
   text-align: right;
+  justify-self: end;
 }
 
 .alignCenter {
