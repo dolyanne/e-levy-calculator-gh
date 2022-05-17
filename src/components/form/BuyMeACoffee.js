@@ -13,6 +13,11 @@ const BuyMeACoffee = () => {
     script.setAttribute("data-name", "BMC-Widget");
     script.setAttribute("data-cfasync", "false");
     script.setAttribute("data-id", "dolyanne");
+    script.setAttribute("data-description", "Support me on Buy me a coffee!");
+    script.setAttribute(
+      "data-message",
+      "Buy me a Coffee"
+    );
     script.setAttribute("data-color", "#40DCA5");
     script.setAttribute("data-position", "Right");
     script.setAttribute("data-x_margin", "18");
