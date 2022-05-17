@@ -1,5 +1,6 @@
 import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
+import Buymeacoffee from "../../components/form/BuyMeACoffee";
 import { preserveChoice } from "../../utils/ux-enhancements";
 
 const Home = ({ showAdvanced }) => {
@@ -139,6 +140,7 @@ const Home = ({ showAdvanced }) => {
           </div>
         </div>
       </form>
+      <Buymeacoffee />
       {/* <span className="footer">Made with love</span> */}
     </main>
   );
