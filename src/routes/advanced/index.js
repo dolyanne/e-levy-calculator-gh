@@ -21,7 +21,6 @@ import Disclaimer from "../../components/global/Disclaimer";
 import FromPicker from "../../components/form/FromPicker";
 import ToPicker from "../../components/form/ToPicker";
 import { preserveChoice } from "../../utils/ux-enhancements";
-import BuyMeACoffee from "../../components/form/BuyMeACoffee";
 
 const Advanced = ({ showSimple }) => {
   // state
@@ -245,7 +244,6 @@ const Advanced = ({ showSimple }) => {
           </ItemGroup>
         </GridItem>
       </form>
-      <BuyMeACoffee />
     </MainContainer>
   );
 };

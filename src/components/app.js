@@ -1,17 +1,17 @@
-import { h } from "preact";
-import { Router } from "preact-router";
-import { useState, useEffect, useRef } from "preact/hooks";
+import { h } from 'preact'
+import { Router } from 'preact-router'
+import { useState } from 'preact/hooks'
 
 // Code-splitting is automated for `routes` directory
-import Home from "../routes/home";
-import baseroute from "../baseroute";
-import Advanced from "../routes/advanced";
-import { getPreservedChoice } from "../utils/ux-enhancements";
+import Home from '../routes/home'
+import baseroute from '../baseroute'
+import Advanced from '../routes/advanced'
+import { getPreservedChoice } from '../utils/ux-enhancements'
 
 const App = () => {
-  const [showAdvanced, setShowAdvanced] = useState(getPreservedChoice());
+  const [showAdvanced, setShowAdvanced] = useState(getPreservedChoice())
   return (
-    <div id="app">
+    <div id='app'>
       <Router>
         {showAdvanced === false ? (
           <Home
@@ -26,7 +26,7 @@ const App = () => {
         )}
       </Router>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

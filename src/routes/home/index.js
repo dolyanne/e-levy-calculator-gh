@@ -1,6 +1,5 @@
 import { h } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
-import BuyMeACoffee from "../../components/form/BuyMeACoffee";
 import { preserveChoice } from "../../utils/ux-enhancements";
 
 const Home = ({ showAdvanced }) => {
@@ -134,13 +133,12 @@ const Home = ({ showAdvanced }) => {
         <div className="gridItem gridItemFull">
           <div className="inputGroup centerFlex">
             <span className="disclaimer">
-              Disclaimer: We did our best to provide accurate results, however
+              Disclaimer: We did our best to provide accurate results however,
               you may experience differences in real-world usage.
             </span>
           </div>
         </div>
       </form>
-      <BuyMeACoffee />
       {/* <span className="footer">Made with love</span> */}
     </main>
   );
