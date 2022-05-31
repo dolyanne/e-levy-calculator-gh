@@ -3,9 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.e_levy_calculator.www.twa",
+      "package_name": "[com.e_levy_calculator.www.twa]",
       "sha256_cert_fingerprints": [
-        "B4:9B:68:40:64:0E:12:54:78:32:35:7A:09:C7:B7:F4:42:B5:CE:AA:AF:0C:3F:DB:99:C6:CA:23:DD:1A:88:08"
+        "D3:81:F2:AB:F9:55:7B:02:1C:21:56:44:E1:46:93:51:A5:11:DD:3B:83:CA:82:68:97:67:BC:5C:7F:82:DC:9D"
       ]
     }
   }
