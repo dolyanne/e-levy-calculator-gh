@@ -12,11 +12,9 @@ body {
 /* containers */
 .mainContainer {
   background: rgb(20, 28, 125);
-  background: linear-gradient(
-    151deg,
-    rgba(20, 28, 125, 1) 0%,
-    rgba(14, 19, 80, 1) 67%
-  );
+  background: linear-gradient(151deg,
+      rgba(20, 28, 125, 1) 0%,
+      rgba(14, 19, 80, 1) 67%);
   color: white;
   width: 100%;
   min-height: 100vh;
@@ -131,6 +129,12 @@ body {
   float: right;
 }
 
+.closeText {
+  color: black;
+  font-size: 17px;
+  margin-bottom: -5px
+}
+
 .pickerTitle {
   display: block;
 }
@@ -180,25 +184,42 @@ body {
   display: grid;
   grid-template-columns: 46% 8% 46%;
 }
+
 .platformPickerGrid .fromGrid {
   display: grid;
   grid-template-columns: minmax(80px, 1fr) 80px;
   align-items: center;
 }
+
 .platformPickerGrid .toGrid {
   display: grid;
   grid-template-columns: 80px minmax(80px, 1fr);
   align-items: center;
 }
+
 .selectedText {
   display: flex;
   flex-direction: column;
 }
+
 .selectedVisual {
   margin: 0 10px;
   background-color: #0b0f46;
   height: 60px;
   border-radius: 10px;
+}
+
+.privacyPolicyContainer {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 75%;
+  max-width: 1200px;
+  text-align: left;
+  font-size: 15px;
+  background-color: white;
+  color: black;
+  padding: 30px;
+  border-radius: 5px;
 }
 
 /* Text Elements */
@@ -228,7 +249,8 @@ body {
   max-width: 100%;
   font-size: 35px;
   color: white;
-  padding: 10px 20px;
+  padding: 5px 10px 3px 10px;
+  margin-bottom: 0px
 }
 
 .currency {
@@ -269,6 +291,14 @@ body {
   font-weight: 500;
   color: white;
   font-size: 12px;
+  text-align: center;
+}
+
+.privacy {
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -408,7 +438,15 @@ body {
   .displayText {
     max-width: 100%;
     font-size: 18px;
-    padding: 2px 5px;
+    padding: 2px 2px 1px 2px;
+    margin-bottom: 0px
+  }
+
+  .subDisplayText {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0px;
+    text-align: center;
   }
 
   .disclaimer {
@@ -435,9 +473,11 @@ body {
   .platformPickerGrid {
     height: 60px;
   }
+
   .platformPickerGrid .fromGrid {
     grid-template-columns: minmax(60px, 1fr) 60px;
   }
+
   .platformPickerGrid .toGrid {
     grid-template-columns: 60px minmax(60px, 1fr);
   }
@@ -484,6 +524,7 @@ input[type="number"] {
   background-size: cover;
   color: white;
 }
+
 .airtel:hover {
   background-color: #f73b3b;
 }

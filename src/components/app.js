@@ -6,6 +6,7 @@ import { useState } from 'preact/hooks'
 import Home from '../routes/home'
 import baseroute from '../baseroute'
 import Advanced from '../routes/advanced'
+import PrivacyPolicy from '../routes/privacy-policy'
 import { getPreservedChoice } from '../utils/ux-enhancements'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             showSimple={() => setShowAdvanced(false)}
           />
         )}
+        <PrivacyPolicy path={`${baseroute}/privacy-policy`} />
       </Router>
     </div>
   )

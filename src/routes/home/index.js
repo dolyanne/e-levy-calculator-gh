@@ -49,6 +49,10 @@ const Home = ({ showAdvanced }) => {
         <div className='gridItem gridItemFull'>
           <div className='inputGroup centerFlex'>
             <h1 className='displayText'>E-LEVY CALCULATOR</h1>
+            <h5 className='subDisplayText'>
+              Find out how much you will be charged as e-levy for sending money
+              electronically in Ghana
+            </h5>
           </div>
         </div>
         <div className='gridItem gridItemFullMobileOnly'>
@@ -142,6 +146,9 @@ const Home = ({ showAdvanced }) => {
               Disclaimer: We did our best to provide accurate results however,
               you may experience differences in real-world usage.
             </span>
+            <a className='privacy' href='/privacy-policy/'>
+              Privacy Policy
+            </a>
           </div>
         </div>
       </form>

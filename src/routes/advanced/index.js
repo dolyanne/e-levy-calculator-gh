@@ -116,6 +116,10 @@ const Advanced = ({ showSimple }) => {
         <GridItem className='gridItemFull'>
           <div className='inputGroup centerFlex'>
             <h1 className='displayText'>E-LEVY CALCULATOR</h1>
+            <h5 className='subDisplayText'>
+              Find out how much you will be charged as e-levy for sending money
+              electronically in Ghana
+            </h5>
           </div>
         </GridItem>
 
