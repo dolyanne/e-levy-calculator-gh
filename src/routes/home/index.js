@@ -4,7 +4,7 @@ import GetOnGooglePlay from '../../components/global/GetOnGooglePlay'
 import { preserveChoice } from '../../utils/ux-enhancements'
 
 const Home = ({ showAdvanced }) => {
-  const elevyTax = 0.015 //1.5/100
+  const elevyTax = 0.01 //1/100
   const [amount, setAmount] = useState('')
   const [transferAmount, setTransferAmount] = useState(0)
   const [elevyAmount, setElevyAmount] = useState(0)
@@ -114,7 +114,7 @@ const Home = ({ showAdvanced }) => {
                 minimumFractionDigits: 2
               })}`}
             </span>
-            <span className='labelText'>Rate: 1.5%, first 100GHS exempt</span>
+            <span className='labelText'>Rate: 1%, first 100GHS exempt</span>
           </div>
         </div>
         <div className='gridItem gridItemFull'>

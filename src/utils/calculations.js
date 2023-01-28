@@ -1,6 +1,6 @@
 import { platforms } from "../data/platforms";
 
-export const elevyTax = 0.015; //1.5/100
+export const elevyTax = 0.01; //1/100
 
 export function exemption(previousAmount) {
   let finalExemptionAmount = 0;
