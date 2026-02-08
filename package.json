@@ -5,7 +5,8 @@
   "license": "MIT",
   "homepage": "https://dolyanne.github.io/e-levy-calculator-gh",
   "scripts": {
-    "build": "preact build --prerenderUrls ./prerender-urls.json",
+    "build": "preact build",
+    "build:prerender": "preact build --prerenderUrls ./prerender-urls.json",
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint src",
